@@ -61,7 +61,8 @@ function Index() {
       <Header />
 
       <main>
-        <section className="relative overflow-hidden bg-grid-fade">
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-fade" />
           <img
             src={heroImage}
             alt="Vue nocturne de Casablanca avec une trame numérique lumineuse"

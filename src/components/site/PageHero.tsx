@@ -14,7 +14,8 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-grid-fade">
+    <section className="relative overflow-hidden border-b border-border">
+      <div className="absolute inset-0 bg-grid-fade" />
       <div className="glow-blob -top-24 left-1/4 h-72 w-72 bg-primary" />
       <div className="glow-blob top-10 right-0 h-64 w-64 bg-teal" />
       <div className="relative mx-auto max-w-6xl px-5 py-20 sm:py-24">
