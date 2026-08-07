@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WhatsAppFloat } from "../components/site/WhatsAppFloat";
+import { Preloader } from "../components/site/Preloader";
 import { OG_IMAGE, SITE_NAME } from "../lib/seo";
 
 function NotFoundComponent() {
@@ -141,6 +142,7 @@ function RootComponent() {
       <Outlet />
       <WhatsAppFloat />
       <div className="bg-noise pointer-events-none fixed inset-0 z-40 opacity-[0.04]" aria-hidden="true" />
+      <Preloader />
     </QueryClientProvider>
   );
 }
