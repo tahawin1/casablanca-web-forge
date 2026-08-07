@@ -1,6 +1,6 @@
-export const PHONE = "+212 6 12 34 56 78";
-export const PHONE_TEL = "+212612345678";
-export const PHONE_WA = "212612345678";
+export const PHONE = "+212 6 63 39 40 14";
+export const PHONE_TEL = "+212663394014";
+export const PHONE_WA = "212663394014";
 
 export type Project = {
   name: string;
