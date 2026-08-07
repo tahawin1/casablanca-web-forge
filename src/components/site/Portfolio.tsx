@@ -1,17 +1,18 @@
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "./data";
+import { Reveal } from "./Reveal";
 
 export function Portfolio() {
   return (
     <section id="realisations" className="mx-auto max-w-6xl px-5 py-24">
       <div className="grid gap-7 md:grid-cols-2">
-        {projects.map((p) => (
+        {projects.map((p, i) => (
+          <Reveal key={p.domain} delay={i * 80}>
           <a
-            key={p.domain}
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group surface-card overflow-hidden rounded-2xl transition-transform hover:-translate-y-1"
+            className="group surface-card block overflow-hidden rounded-2xl transition-transform hover:-translate-y-1"
           >
             <div className="relative aspect-[16/9] overflow-hidden border-b border-border">
               <img
@@ -47,6 +48,7 @@ export function Portfolio() {
               <p className="mt-5 text-xs font-medium text-primary">{p.domain}</p>
             </div>
           </a>
+          </Reveal>
         ))}
       </div>
     </section>

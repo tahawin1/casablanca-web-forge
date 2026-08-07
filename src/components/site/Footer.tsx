@@ -84,8 +84,11 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="border-t border-border px-5 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Studio Web · Casablanca — Tous droits réservés.
+      <div className="flex flex-col items-center gap-2 border-t border-border px-5 py-6 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between">
+        <span>© {new Date().getFullYear()} Studio Web · Casablanca — Tous droits réservés.</span>
+        <Link to="/mentions-legales" className="hover:text-foreground">
+          Mentions légales
+        </Link>
       </div>
     </footer>
   );

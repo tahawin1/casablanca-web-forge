@@ -3,6 +3,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Portfolio } from "@/components/site/Portfolio";
+import { Gallery } from "@/components/site/Gallery";
 
 export const Route = createFileRoute("/realisations")({
   head: () => ({
@@ -29,6 +30,9 @@ function RealisationsPage() {
           description="Quatre projets livrés au Maroc et à l'international : marque, e-commerce, hôtellerie et service local. Chacun cliquable pour voir le site réel."
         />
         <Portfolio />
+        <div className="border-t border-border bg-card/40">
+          <Gallery />
+        </div>
       </main>
       <Footer />
     </div>

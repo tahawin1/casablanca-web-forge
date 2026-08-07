@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/accordion";
 import { services, steps, faqs, technologies, PHONE_WA, type Accent } from "./data";
 import { accentStyles } from "./accent";
+import { Reveal } from "./Reveal";
 
 export function Services() {
   return (
@@ -24,12 +25,12 @@ export function Services() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Services</p>
         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Ce que je réalise</h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {services.map((s) => {
+          {services.map((s, i) => {
             const a = accentStyles[s.accent];
             return (
+              <Reveal key={s.title} delay={i * 100}>
               <article
-                key={s.title}
-                className={`surface-card relative flex flex-col rounded-2xl p-7 ${
+                className={`surface-card relative flex h-full flex-col rounded-2xl p-7 ${
                   s.popular ? `border-2 ${a.border}` : ""
                 }`}
               >
@@ -52,6 +53,7 @@ export function Services() {
                   ))}
                 </ul>
               </article>
+              </Reveal>
             );
           })}
         </div>
@@ -100,16 +102,18 @@ export function Advantages() {
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Garanties</p>
       <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Pourquoi travailler avec moi</h2>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {advantages.map((a) => {
+        {advantages.map((a, i) => {
           const s = accentStyles[a.accent];
           return (
-            <div key={a.t} className="surface-card rounded-2xl p-6">
+            <Reveal key={a.t} delay={i * 100}>
+            <div className="surface-card h-full rounded-2xl p-6">
               <span className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${s.iconBg}`}>
                 <a.icon className="h-5 w-5" />
               </span>
               <h3 className="mt-4 text-lg font-semibold">{a.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.d}</p>
             </div>
+            </Reveal>
           );
         })}
       </div>
@@ -125,10 +129,10 @@ export function Process() {
         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Comment ça se passe</h2>
         <div className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="absolute top-6 hidden h-px w-full bg-border lg:block" />
-          {steps.map((s) => {
+          {steps.map((s, i) => {
             const a = accentStyles[s.accent];
             return (
-              <div key={s.n} className="relative">
+              <Reveal key={s.n} delay={i * 120} className="relative">
                 <span
                   className={`relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold ${a.iconBg}`}
                 >
@@ -136,7 +140,7 @@ export function Process() {
                 </span>
                 <h3 className="mt-5 text-lg font-semibold">{s.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-              </div>
+              </Reveal>
             );
           })}
         </div>
@@ -151,13 +155,15 @@ export function Faq() {
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">FAQ</p>
       <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Questions fréquentes</h2>
       <Accordion type="single" collapsible className="mt-10">
-        {faqs.map((f) => (
-          <AccordionItem key={f.q} value={f.q}>
-            <AccordionTrigger className="text-left text-base font-medium">{f.q}</AccordionTrigger>
-            <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-              {f.a}
-            </AccordionContent>
-          </AccordionItem>
+        {faqs.map((f, i) => (
+          <Reveal key={f.q} delay={i * 60}>
+            <AccordionItem value={f.q}>
+              <AccordionTrigger className="text-left text-base font-medium">{f.q}</AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                {f.a}
+              </AccordionContent>
+            </AccordionItem>
+          </Reveal>
         ))}
       </Accordion>
     </section>

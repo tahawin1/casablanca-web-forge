@@ -3,6 +3,7 @@ import { Clock, MapPin, Phone, MessageCircle } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/Sections";
 import { PHONE, PHONE_TEL, PHONE_WA } from "@/components/site/data";
 
@@ -84,7 +85,9 @@ function ContactPage() {
               </ul>
             </div>
 
-            <ContactForm />
+            <Reveal delay={150}>
+              <ContactForm />
+            </Reveal>
           </div>
         </section>
       </main>

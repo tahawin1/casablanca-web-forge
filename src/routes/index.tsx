@@ -3,6 +3,7 @@ import { Phone, MessageCircle, MapPin, ArrowRight, Gauge, Clock, ShieldCheck } f
 import heroImage from "@/assets/hero-casablanca.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
 import { PHONE, PHONE_TEL, PHONE_WA, projects, services } from "@/components/site/data";
 import { accentStyles } from "@/components/site/accent";
 
@@ -128,15 +129,15 @@ function Index() {
 
         <section className="mx-auto max-w-6xl px-5 py-20">
           <div className="grid gap-6 sm:grid-cols-3">
-            {trust.map((t) => {
+            {trust.map((t, i) => {
               const a = accentStyles[t.accent];
               return (
-                <div key={t.t} className="surface-card flex items-center gap-4 rounded-2xl p-5">
+                <Reveal key={t.t} delay={i * 100} className="surface-card flex items-center gap-4 rounded-2xl p-5">
                   <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${a.iconBg}`}>
                     <t.icon className="h-5 w-5" />
                   </span>
                   <span className="text-sm font-semibold">{t.t}</span>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -160,13 +161,13 @@ function Index() {
             </div>
 
             <div className="mt-12 grid gap-7 md:grid-cols-3">
-              {projects.slice(0, 3).map((p) => (
+              {projects.slice(0, 3).map((p, i) => (
+                <Reveal key={p.domain} delay={i * 100}>
                 <a
-                  key={p.domain}
                   href={p.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group surface-card overflow-hidden rounded-2xl transition-transform hover:-translate-y-1"
+                  className="group surface-card block overflow-hidden rounded-2xl transition-transform hover:-translate-y-1"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden border-b border-border">
                     <img
@@ -185,6 +186,7 @@ function Index() {
                     </p>
                   </div>
                 </a>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -204,14 +206,14 @@ function Index() {
             </Link>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {services.map((s) => {
+            {services.map((s, i) => {
               const a = accentStyles[s.accent];
               return (
-                <div key={s.title} className="surface-card rounded-2xl p-7">
+                <Reveal key={s.title} delay={i * 100} className="surface-card rounded-2xl p-7">
                   <h3 className="text-xl font-semibold">{s.title}</h3>
                   <p className={`mt-1 text-sm font-semibold ${a.text}`}>{s.price}</p>
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
-                </div>
+                </Reveal>
               );
             })}
           </div>
