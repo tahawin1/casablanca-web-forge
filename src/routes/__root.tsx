@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WhatsAppFloat } from "../components/site/WhatsAppFloat";
 import { Preloader } from "../components/site/Preloader";
+import { Starfield } from "../components/site/Starfield";
 import { OG_IMAGE, SITE_NAME } from "../lib/seo";
 
 function NotFoundComponent() {
@@ -138,6 +139,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Starfield />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <WhatsAppFloat />

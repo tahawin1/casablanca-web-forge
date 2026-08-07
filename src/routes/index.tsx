@@ -72,7 +72,7 @@ function Index() {
   }
 
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground">
+    <div id="top" className="relative min-h-screen text-foreground">
       <Header />
 
       <main>

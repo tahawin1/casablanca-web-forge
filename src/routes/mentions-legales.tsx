@@ -19,7 +19,7 @@ export const Route = createFileRoute("/mentions-legales")({
 
 function MentionsLegalesPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen text-foreground">
       <Header />
       <main>
         <PageHero eyebrow="Informations légales" title="Mentions légales" />
