@@ -4,15 +4,29 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Faq } from "@/components/site/Sections";
+import { faqs } from "@/components/site/data";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
-    meta: [
-      { title: "Questions fréquentes — Studio Web Casablanca" },
+    ...pageHead({
+      title: "Questions fréquentes sur la création de site web | Studio Web · Casablanca",
+      description:
+        "Délais de création, hébergement, modification du site, zone d'intervention, paiement : les réponses aux questions les plus posées sur la création d'un site web à Casablanca.",
+      path: "/faq",
+    }),
+    scripts: [
       {
-        name: "description",
-        content:
-          "Délais, hébergement, modification du site, zone d'intervention, paiement : les réponses aux questions les plus posées.",
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
       },
     ],
   }),

@@ -4,17 +4,14 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Portfolio } from "@/components/site/Portfolio";
 import { Gallery } from "@/components/site/Gallery";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/realisations")({
-  head: () => ({
-    meta: [
-      { title: "Réalisations — Studio Web Casablanca" },
-      {
-        name: "description",
-        content:
-          "Sites déjà livrés au Maroc et à l'international : marque, e-commerce, hôtellerie et service local.",
-      },
-    ],
+  head: () => pageHead({
+    title: "Réalisations : sites web créés à Casablanca et au Maroc | Studio Web · Casablanca",
+    description:
+      "Découvrez les sites vitrines, boutiques en ligne et sites de marque déjà livrés au Maroc et à l'international : exemples concrets de création de site web par Studio Web Casablanca.",
+    path: "/realisations",
   }),
   component: RealisationsPage,
 });

@@ -6,16 +6,14 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/Sections";
 import { PHONE, PHONE_TEL, PHONE_WA } from "@/components/site/data";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Studio Web Casablanca" },
-      {
-        name: "description",
-        content: "Demandez un devis gratuit par téléphone, WhatsApp ou via le formulaire de contact.",
-      },
-    ],
+  head: () => pageHead({
+    title: "Contact — Devis gratuit pour votre site web à Casablanca | Studio Web · Casablanca",
+    description:
+      "Demandez un devis gratuit pour la création de votre site web à Casablanca, par téléphone, WhatsApp ou via le formulaire de contact. Réponse sous 24h.",
+    path: "/contact",
   }),
   component: ContactPage,
 });

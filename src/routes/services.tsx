@@ -3,17 +3,14 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Services, Advantages } from "@/components/site/Sections";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services & tarifs — Studio Web Casablanca" },
-      {
-        name: "description",
-        content:
-          "Site vitrine, boutique en ligne ou application sur mesure : tarifs, contenu inclus et délais de livraison.",
-      },
-    ],
+  head: () => pageHead({
+    title: "Tarifs création de site web à Casablanca | Studio Web · Casablanca",
+    description:
+      "Prix pour la création d'un site vitrine, d'une boutique en ligne ou d'une application sur mesure à Casablanca : contenu inclus, tarifs de départ et délais de livraison.",
+    path: "/services",
   }),
   component: ServicesPage,
 });

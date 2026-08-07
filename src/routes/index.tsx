@@ -6,37 +6,37 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { PHONE, PHONE_TEL, PHONE_WA, projects, services } from "@/components/site/data";
 import { accentStyles } from "@/components/site/accent";
+import { pageHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Création de sites web à Casablanca — Portfolio & devis" },
-      {
-        name: "description",
-        content:
-          "Développeur web à Casablanca : sites vitrines, boutiques en ligne et applications sur mesure. Découvrez mes réalisations au Maroc et à l'international. Devis gratuit par téléphone.",
-      },
-      { property: "og:title", content: "Création de sites web à Casablanca — Portfolio & devis" },
-      {
-        property: "og:description",
-        content:
-          "Sites vitrines, e-commerce et applications sur mesure. Réalisations : Volt Sports Water, Taj Auto Accessoire, Hôtel Ryad, Pressing Zerktouni.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
+    ...pageHead({
+      title: "Création de site web à Casablanca — Devis gratuit | Studio Web · Casablanca",
+      description:
+        "Développeur web à Casablanca : création de sites vitrines, boutiques en ligne et applications sur mesure. Sites rapides, responsives et optimisés pour Google. Devis gratuit sous 24h.",
+      path: "/",
+    }),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": `${SITE_URL}/#business`,
           name: "Studio Web Casablanca",
           description:
             "Création de sites web, boutiques en ligne et applications sur mesure à Casablanca.",
+          url: SITE_URL,
           telephone: PHONE,
-          areaServed: "Maroc",
+          priceRange: "3500 MAD - sur devis",
+          areaServed: ["Casablanca", "Maroc"],
           address: { "@type": "PostalAddress", addressLocality: "Casablanca", addressCountry: "MA" },
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "09:00",
+            closes: "20:00",
+          },
         }),
       },
     ],

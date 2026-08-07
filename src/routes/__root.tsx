@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WhatsAppFloat } from "../components/site/WhatsAppFloat";
+import { OG_IMAGE, SITE_NAME } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -78,20 +79,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Création de sites web à Casablanca" },
+      { title: "Création de site web à Casablanca | " + SITE_NAME },
       {
         name: "description",
         content:
-          "Studio web à Casablanca : sites vitrines, e-commerce et applications sur mesure, rapides et modernes.",
+          "Création de sites web à Casablanca : sites vitrines, boutiques en ligne et applications sur mesure, rapides et optimisés pour Google. Devis gratuit.",
       },
-      { property: "og:title", content: "Création de sites web à Casablanca" },
+      { name: "keywords", content: "création site web Casablanca, développeur web Maroc, création site internet, site vitrine, boutique en ligne, agence web Casablanca" },
+      { property: "og:title", content: "Création de site web à Casablanca | " + SITE_NAME },
       {
         property: "og:description",
-        content: "Sites vitrines, e-commerce et applications sur mesure à Casablanca.",
+        content: "Sites vitrines, boutiques en ligne et applications sur mesure à Casablanca.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:locale", content: "fr_MA" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
       {
@@ -115,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>

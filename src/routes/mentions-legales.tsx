@@ -3,15 +3,17 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { PHONE } from "@/components/site/data";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/mentions-legales")({
-  head: () => ({
-    meta: [
-      { title: "Mentions légales — Studio Web Casablanca" },
-      { name: "description", content: "Mentions légales et informations sur l'éditeur du site." },
-      { name: "robots", content: "noindex" },
-    ],
-  }),
+  head: () => {
+    const head = pageHead({
+      title: "Mentions légales | Studio Web · Casablanca",
+      description: "Mentions légales et informations sur l'éditeur du site.",
+      path: "/mentions-legales",
+    });
+    return { ...head, meta: [...head.meta, { name: "robots", content: "noindex" }] };
+  },
   component: MentionsLegalesPage,
 });
 
