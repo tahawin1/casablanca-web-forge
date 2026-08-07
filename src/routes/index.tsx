@@ -1,9 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useRef, type MouseEvent } from "react";
 import { Phone, MessageCircle, MapPin, ArrowRight, Gauge, Clock, ShieldCheck } from "lucide-react";
 import heroImage from "@/assets/hero-casablanca.jpg";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
+import { Marquee } from "@/components/site/Marquee";
+import { CountUp } from "@/components/site/CountUp";
+import { Magnetic } from "@/components/site/Magnetic";
 import { PHONE, PHONE_TEL, PHONE_WA, projects, services } from "@/components/site/data";
 import { accentStyles } from "@/components/site/accent";
 import { pageHead, SITE_URL } from "@/lib/seo";
@@ -44,10 +48,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const stats = [
-  { v: "4+", l: "sites en ligne" },
-  { v: "7-10 j", l: "délai vitrine" },
-  { v: "100 %", l: "responsive mobile" },
+const results = [
+  { value: 4, suffix: "+", l: "sites livrés" },
+  { value: 7, suffix: "-10 j", l: "délai vitrine" },
+  { value: 100, suffix: " %", l: "responsive mobile" },
 ];
 
 const trust = [
@@ -57,12 +61,26 @@ const trust = [
 ];
 
 function Index() {
+  const heroRef = useRef<HTMLElement>(null);
+
+  function handleHeroMove(e: MouseEvent<HTMLElement>) {
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--spot-x", `${((e.clientX - rect.left) / rect.width) * 100}%`);
+    el.style.setProperty("--spot-y", `${((e.clientY - rect.top) / rect.height) * 100}%`);
+  }
+
   return (
     <div id="top" className="min-h-screen bg-background text-foreground">
       <Header />
 
       <main>
-        <section className="relative overflow-hidden">
+        <section
+          ref={heroRef}
+          onMouseMove={handleHeroMove}
+          className="relative overflow-hidden"
+        >
           <div className="absolute inset-0 bg-grid-fade" />
           <img
             src={heroImage}
@@ -74,56 +92,65 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
           <div className="glow-blob -top-16 right-10 h-80 w-80 bg-primary" />
           <div className="glow-blob top-40 left-0 h-64 w-64 bg-teal" />
+          <div className="spotlight pointer-events-none absolute inset-0 transition-[background] duration-300 motion-reduce:hidden" />
+
           <div className="relative mx-auto max-w-6xl px-5 py-24 sm:py-32">
-            <p className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5" /> Casablanca, Maroc
-            </p>
-            <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl">
-              Je crée des sites web <span className="text-ember">modernes</span> qui vous ramènent
-              des clients.
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Sites vitrines, boutiques en ligne et applications sur mesure. Livrés vite, pensés
-              pour convertir, optimisés pour Google.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground shadow-[var(--shadow-ember)] transition-transform hover:-translate-y-0.5"
-              >
-                <Phone className="h-5 w-5" />
-                Appelez-moi : {PHONE}
-              </a>
-              <a
-                href={`https://wa.me/${PHONE_WA}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-base font-medium transition-colors hover:bg-secondary"
-              >
-                <MessageCircle className="h-5 w-5" />
-                WhatsApp
-              </a>
+            <Reveal>
+              <p className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                <MapPin className="h-3.5 w-3.5" /> Casablanca, Maroc
+              </p>
+            </Reveal>
+            <Reveal delay={80}>
+              <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl">
+                Je crée des sites web <span className="text-ember">modernes</span> qui vous
+                ramènent des clients.
+              </h1>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+                Sites vitrines, boutiques en ligne et applications sur mesure. Livrés vite, pensés
+                pour convertir, optimisés pour Google.
+              </p>
+            </Reveal>
+
+            <Reveal delay={240}>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Magnetic>
+                  <a
+                    href={`tel:${PHONE_TEL}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground shadow-[var(--shadow-ember)] transition-transform hover:-translate-y-0.5"
+                  >
+                    <Phone className="h-5 w-5" />
+                    Appelez-moi : {PHONE}
+                  </a>
+                </Magnetic>
+                <Magnetic>
+                  <a
+                    href={`https://wa.me/${PHONE_WA}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-base font-medium transition-colors hover:bg-secondary"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    WhatsApp
+                  </a>
+                </Magnetic>
+              </div>
+            </Reveal>
+
+            <div className="mt-16 max-w-2xl border-t border-border pt-6">
+              <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">
+                Sites déjà en ligne
+              </p>
+              <Marquee>
+                {projects.map((p) => (
+                  <span key={p.domain} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span className="h-1 w-1 rounded-full bg-primary" />
+                    {p.domain}
+                  </span>
+                ))}
+              </Marquee>
             </div>
-
-            <dl className="mt-14 grid max-w-lg grid-cols-3 gap-6">
-              {stats.map((s) => (
-                <div key={s.l}>
-                  <dt className="text-2xl font-bold text-ember sm:text-3xl">{s.v}</dt>
-                  <dd className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                    {s.l}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <ul className="mt-14 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              {projects.map((p) => (
-                <li key={p.domain} className="flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-primary" />
-                  {p.domain}
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
@@ -143,7 +170,24 @@ function Index() {
           </div>
         </section>
 
-        <section id="realisations" className="border-y border-border bg-card/40">
+        <section className="border-y border-border bg-card/40">
+          <div className="mx-auto max-w-6xl px-5 py-20">
+            <div className="grid grid-cols-3 gap-6 text-center">
+              {results.map((r, i) => (
+                <Reveal key={r.l} delay={i * 100}>
+                  <div className="text-4xl font-bold text-ember sm:text-5xl">
+                    <CountUp value={r.value} suffix={r.suffix} />
+                  </div>
+                  <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground sm:text-sm">
+                    {r.l}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="realisations" className="bg-card/40">
           <div className="mx-auto max-w-6xl px-5 py-24">
             <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
               <div className="min-w-0">
@@ -178,6 +222,11 @@ function Index() {
                       height={675}
                       className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center bg-background/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground">
+                        Voir le site <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
                   </div>
                   <div className="p-5">
                     <h3 className="truncate text-lg font-semibold">{p.name}</h3>
@@ -209,10 +258,17 @@ function Index() {
             {services.map((s, i) => {
               const a = accentStyles[s.accent];
               return (
-                <Reveal key={s.title} delay={i * 100} className="surface-card rounded-2xl p-7">
-                  <h3 className="text-xl font-semibold">{s.title}</h3>
-                  <p className={`mt-1 text-sm font-semibold ${a.text}`}>{s.price}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                <Reveal
+                  key={s.title}
+                  delay={i * 100}
+                  className="surface-card group relative overflow-hidden rounded-2xl p-7 transition-colors hover:border-transparent"
+                >
+                  <span className={`absolute -right-3 -top-3 text-6xl font-bold opacity-[0.08] ${a.text}`}>
+                    0{i + 1}
+                  </span>
+                  <h3 className="relative text-xl font-semibold">{s.title}</h3>
+                  <p className={`relative mt-1 text-sm font-semibold ${a.text}`}>{s.price}</p>
+                  <p className="relative mt-4 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                 </Reveal>
               );
             })}
@@ -227,21 +283,25 @@ function Index() {
               temps il prendra. Devis gratuit, sans engagement.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-5 text-xl font-bold text-primary-foreground shadow-[var(--shadow-ember)] transition-transform hover:-translate-y-0.5"
-              >
-                Demander un devis <ArrowRight className="h-5 w-5" />
-              </Link>
-              <a
-                href={`https://wa.me/${PHONE_WA}?text=${encodeURIComponent("Bonjour, je souhaite un devis pour un site web.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-border px-8 py-5 text-lg font-medium transition-colors hover:bg-secondary"
-              >
-                <MessageCircle className="h-6 w-6" />
-                WhatsApp
-              </a>
+              <Magnetic>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-5 text-xl font-bold text-primary-foreground shadow-[var(--shadow-ember)] transition-transform hover:-translate-y-0.5"
+                >
+                  Demander un devis <ArrowRight className="h-5 w-5" />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href={`https://wa.me/${PHONE_WA}?text=${encodeURIComponent("Bonjour, je souhaite un devis pour un site web.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border border-border px-8 py-5 text-lg font-medium transition-colors hover:bg-secondary"
+                >
+                  <MessageCircle className="h-6 w-6" />
+                  WhatsApp
+                </a>
+              </Magnetic>
             </div>
           </div>
         </section>

@@ -140,6 +140,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <WhatsAppFloat />
+      <div className="bg-noise pointer-events-none fixed inset-0 z-40 opacity-[0.04]" aria-hidden="true" />
     </QueryClientProvider>
   );
 }

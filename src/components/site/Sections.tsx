@@ -17,6 +17,7 @@ import {
 import { services, steps, faqs, technologies, PHONE_WA, type Accent } from "./data";
 import { accentStyles } from "./accent";
 import { Reveal } from "./Reveal";
+import { AnimatedLine } from "./AnimatedLine";
 
 export function Services() {
   return (
@@ -128,7 +129,7 @@ export function Process() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">Méthode</p>
         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Comment ça se passe</h2>
         <div className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="absolute top-6 hidden h-px w-full bg-border lg:block" />
+          <AnimatedLine className="absolute top-6 hidden h-px w-full lg:block" />
           {steps.map((s, i) => {
             const a = accentStyles[s.accent];
             return (
@@ -170,9 +171,12 @@ export function Faq() {
   );
 }
 
+const projectTypes = ["Site vitrine", "Boutique en ligne", "Application sur mesure", "Autre"];
+
 export function ContactForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [projectType, setProjectType] = useState(projectTypes[0]);
   const [message, setMessage] = useState("");
 
   function handleSubmit(e: FormEvent) {
@@ -180,7 +184,8 @@ export function ContactForm() {
     const text = [
       `Bonjour, je m'appelle ${name || "—"}.`,
       phone ? `Mon numéro : ${phone}.` : null,
-      message ? `Mon projet : ${message}` : "Je souhaite un devis pour un site web.",
+      `Type de projet : ${projectType}.`,
+      message ? `Mon projet : ${message}` : null,
     ]
       .filter(Boolean)
       .join(" ");
@@ -189,29 +194,48 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="surface-card grid gap-4 rounded-2xl p-7 text-left">
-      <div className="grid gap-1.5">
-        <label htmlFor="name" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Nom
-        </label>
-        <input
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Votre nom"
-          className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
-        />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-1.5">
+          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Nom
+          </label>
+          <input
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Votre nom"
+            className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
+          />
+        </div>
+        <div className="grid gap-1.5">
+          <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Téléphone
+          </label>
+          <input
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="06 00 00 00 00"
+            className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
+          />
+        </div>
       </div>
       <div className="grid gap-1.5">
-        <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Téléphone
+        <label htmlFor="projectType" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          Type de projet
         </label>
-        <input
-          id="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="06 00 00 00 00"
+        <select
+          id="projectType"
+          value={projectType}
+          onChange={(e) => setProjectType(e.target.value)}
           className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
-        />
+        >
+          {projectTypes.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="grid gap-1.5">
         <label htmlFor="message" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -222,7 +246,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={4}
-          placeholder="Décrivez rapidement votre besoin (site vitrine, boutique, application...)"
+          placeholder="Décrivez rapidement votre besoin, votre budget ou votre délai souhaité..."
           className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
         />
       </div>

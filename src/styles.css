@@ -219,3 +219,42 @@
   background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
 }
+
+@utility bg-noise {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+@utility spotlight {
+  background: radial-gradient(
+    480px circle at var(--spot-x, 50%) var(--spot-y, 0%),
+    color-mix(in oklab, var(--primary) 18%, transparent),
+    transparent 70%
+  );
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: var(--line-length, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-draw {
+  animation: draw-line 1.4s ease-out forwards;
+}
