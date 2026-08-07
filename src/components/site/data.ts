@@ -60,32 +60,73 @@ export const projects: Project[] = [
   },
 ];
 
-export const services = [
+export type Accent = "amber" | "teal" | "violet";
+
+export const services: {
+  title: string;
+  price: string;
+  text: string;
+  items: string[];
+  accent: Accent;
+  popular?: boolean;
+}[] = [
   {
     title: "Site vitrine",
     price: "à partir de 3 500 DH",
     text: "Présence en ligne claire et crédible : présentation, services, galerie, contact et Google Maps.",
     items: ["5 à 8 pages", "Responsive mobile", "Référencement local", "Livré en 7 à 10 jours"],
+    accent: "teal",
   },
   {
     title: "Boutique en ligne",
     price: "à partir de 8 000 DH",
     text: "Vendez vos produits en ligne : catalogue, filtres, panier, paiement et livraison partout au Maroc.",
     items: ["Catalogue illimité", "Paiement & livraison", "Gestion des stocks", "Suivi des commandes"],
+    accent: "amber",
+    popular: true,
   },
   {
     title: "Application sur mesure",
     price: "sur devis",
     text: "Réservation, espace client, tableau de bord ou outil métier développé exactement selon votre besoin.",
     items: ["Cahier des charges", "Développement dédié", "Espace administrateur", "Évolutions continues"],
+    accent: "violet",
   },
 ];
 
-export const steps = [
-  { n: "01", t: "Appel découverte", d: "10 minutes au téléphone pour cadrer votre besoin, votre délai et votre budget." },
-  { n: "02", t: "Maquette", d: "Vous validez le design et les textes avant la moindre ligne de code." },
-  { n: "03", t: "Développement", d: "Site rapide, responsive et optimisé pour Google, testé sur mobile et desktop." },
-  { n: "04", t: "Mise en ligne", d: "Nom de domaine, hébergement, e-mails pro et formation à la prise en main." },
+export const technologies = [
+  "React",
+  "Vite",
+  "Tailwind CSS",
+  "TypeScript",
+  "Vercel",
+];
+
+export const steps: { n: string; t: string; d: string; accent: Accent }[] = [
+  {
+    n: "01",
+    t: "Appel découverte",
+    d: "10 minutes au téléphone pour cadrer votre besoin, votre délai et votre budget.",
+    accent: "teal",
+  },
+  {
+    n: "02",
+    t: "Maquette",
+    d: "Vous validez le design et les textes avant la moindre ligne de code.",
+    accent: "amber",
+  },
+  {
+    n: "03",
+    t: "Développement",
+    d: "Site rapide, responsive et optimisé pour Google, testé sur mobile et desktop.",
+    accent: "violet",
+  },
+  {
+    n: "04",
+    t: "Mise en ligne",
+    d: "Nom de domaine, hébergement, e-mails pro et formation à la prise en main.",
+    accent: "teal",
+  },
 ];
 
 export const faqs = [

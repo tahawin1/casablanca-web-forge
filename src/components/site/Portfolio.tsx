@@ -4,20 +4,7 @@ import { projects } from "./data";
 export function Portfolio() {
   return (
     <section id="realisations" className="mx-auto max-w-6xl px-5 py-24">
-      <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-        <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
-            Portfolio
-          </p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Des sites déjà en ligne</h2>
-        </div>
-        <p className="max-w-sm text-sm text-muted-foreground">
-          Quatre projets livrés au Maroc et à l'international : marque, e-commerce, hôtellerie et
-          service local.
-        </p>
-      </div>
-
-      <div className="mt-12 grid gap-7 md:grid-cols-2">
+      <div className="grid gap-7 md:grid-cols-2">
         {projects.map((p) => (
           <a
             key={p.domain}
