@@ -1,32 +1,45 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap";
 
 export function AnimatedLine({ className = "" }: { className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    const wrap = wrapRef.current;
+    const bar = barRef.current;
+    if (!wrap || !bar) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(bar, { scaleX: 1 });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        bar,
+        { scaleX: 0 },
+        {
+          scaleX: 1,
+          duration: 1.4,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: wrap,
+            start: "top 85%",
+            once: true,
+          },
+        },
+      );
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={ref} className={`origin-left overflow-hidden bg-border ${className}`}>
+    <div ref={wrapRef} className={`overflow-hidden bg-border ${className}`}>
       <div
-        className={`h-full bg-gradient-to-r from-primary via-teal to-violet transition-transform duration-[1400ms] ease-out motion-reduce:transition-none ${
-          visible ? "scale-x-100" : "scale-x-0"
-        }`}
-        style={{ transformOrigin: "left" }}
+        ref={barRef}
+        className="h-full origin-left scale-x-0 bg-gradient-to-r from-primary via-teal to-violet"
       />
     </div>
   );

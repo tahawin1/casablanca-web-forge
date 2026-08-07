@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { gsap } from "@/lib/gsap";
 
 export function CountUp({
   value,
   suffix = "",
-  duration = 1200,
+  duration = 1.2,
   className = "",
 }: {
   value: number;
@@ -17,29 +18,28 @@ export function CountUp({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
 
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          setDisplay(value);
-          return;
-        }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(value);
+      return;
+    }
 
-        const start = performance.now();
-        function tick(now: number) {
-          const progress = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          setDisplay(Math.round(eased * value));
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    const counter = { val: 0 };
+    const ctx = gsap.context(() => {
+      gsap.to(counter, {
+        val: value,
+        duration,
+        ease: "power2.out",
+        onUpdate: () => setDisplay(Math.round(counter.val)),
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          once: true,
+        },
+      });
+    });
+
+    return () => ctx.revert();
   }, [value, duration]);
 
   return (
