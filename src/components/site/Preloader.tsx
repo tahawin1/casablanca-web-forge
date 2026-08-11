@@ -46,7 +46,7 @@ export function Preloader() {
       <div className="spotlight absolute inset-0" style={centerSpot} />
       <div ref={logoRef} className="relative flex flex-col items-center opacity-0">
         <span className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Studio<span className="text-ember">Web</span>
+          Najah<span className="text-ember">Web</span>
         </span>
         <div ref={lineRef} className="mt-4 h-px w-16 origin-center scale-x-0 bg-primary" />
       </div>
