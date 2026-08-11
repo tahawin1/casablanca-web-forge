@@ -22,12 +22,16 @@ export function Starfield() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let dots: Dot[] = [];
     let raf = 0;
+    let raf1 = 0;
+    let raf2 = 0;
     let running = true;
-    let started = false;
 
-    function applySize(w: number, h: number) {
+    function applySize() {
       const c = canvasRef.current;
-      if (!c || w === 0 || h === 0) return;
+      if (!c) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      if (w === 0 || h === 0) return;
       c.width = w * dpr;
       c.height = h * dpr;
       c.style.width = `${w}px`;
@@ -62,29 +66,35 @@ export function Starfield() {
       if (!reduceMotion && running) raf = requestAnimationFrame(draw);
     }
 
-    const ro = new ResizeObserver((entries) => {
-      const { width, height } = entries[0].contentRect;
-      applySize(width, height);
-      if (reduceMotion) {
-        draw(0);
-      } else if (!started) {
-        started = true;
-        draw(performance.now());
-      }
-    });
-    ro.observe(document.documentElement);
+    function handleResize() {
+      applySize();
+      if (reduceMotion) draw(0);
+    }
 
     function handleVisibility() {
       running = document.visibilityState === "visible";
-      if (running && !reduceMotion && started) raf = requestAnimationFrame(draw);
+      if (running && !reduceMotion) raf = requestAnimationFrame(draw);
       else cancelAnimationFrame(raf);
     }
+
+    // Wait a couple of frames so the viewport has a real, settled size
+    // before the first measurement (a same-frame read can still be 0x0).
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        applySize();
+        draw(performance.now());
+      });
+    });
+
+    window.addEventListener("resize", handleResize);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       running = false;
       cancelAnimationFrame(raf);
-      ro.disconnect();
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      window.removeEventListener("resize", handleResize);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
