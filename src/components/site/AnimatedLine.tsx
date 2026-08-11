@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function AnimatedLine({ className = "" }: { className?: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);

@@ -22,16 +22,15 @@ export function Starfield() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let dots: Dot[] = [];
     let raf = 0;
-    let raf1 = 0;
-    let raf2 = 0;
+    let sized = false;
     let running = true;
 
     function applySize() {
       const c = canvasRef.current;
-      if (!c) return;
+      if (!c) return false;
       const w = window.innerWidth;
       const h = window.innerHeight;
-      if (w === 0 || h === 0) return;
+      if (w === 0 || h === 0) return false;
       c.width = w * dpr;
       c.height = h * dpr;
       c.style.width = `${w}px`;
@@ -45,6 +44,8 @@ export function Starfield() {
         speed: Math.random() * 0.06 + 0.015,
         phase: Math.random() * Math.PI * 2,
       }));
+      sized = true;
+      return true;
     }
 
     function draw(time: number) {
@@ -73,18 +74,25 @@ export function Starfield() {
 
     function handleVisibility() {
       running = document.visibilityState === "visible";
-      if (running && !reduceMotion) raf = requestAnimationFrame(draw);
-      else cancelAnimationFrame(raf);
+      if (!running) {
+        cancelAnimationFrame(raf);
+        return;
+      }
+      if (!sized) applySize();
+      if (reduceMotion) draw(0);
+      else raf = requestAnimationFrame(draw);
     }
 
-    // Wait a couple of frames so the viewport has a real, settled size
-    // before the first measurement (a same-frame read can still be 0x0).
-    raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(() => {
-        applySize();
-        draw(performance.now());
-      });
-    });
+    // Most loads can size synchronously right away. If the viewport isn't
+    // settled yet (or the tab is backgrounded, where rAF never fires),
+    // fall back to a timer retry and to the visibilitychange handler above.
+    if (applySize()) {
+      draw(performance.now());
+    } else {
+      setTimeout(() => {
+        if (applySize()) draw(performance.now());
+      }, 50);
+    }
 
     window.addEventListener("resize", handleResize);
     document.addEventListener("visibilitychange", handleVisibility);
@@ -92,8 +100,6 @@ export function Starfield() {
     return () => {
       running = false;
       cancelAnimationFrame(raf);
-      cancelAnimationFrame(raf1);
-      cancelAnimationFrame(raf2);
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
