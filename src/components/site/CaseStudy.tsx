@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowRight, Target, Wrench, Layers } from "lucide-react";
-import { projects } from "./data";
+import { ArrowUpRight, ArrowRight, Target, Wrench, Layers, Quote } from "lucide-react";
+import { projects, testimonials } from "./data";
 import { Reveal } from "./Reveal";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -8,6 +8,7 @@ import { PageHero } from "./PageHero";
 
 export function CaseStudy({ slug }: { slug: string }) {
   const project = projects.find((p) => p.caseStudySlug === slug);
+  const testimonial = project ? testimonials.find((t) => t.company === project.name) : undefined;
 
   if (!project) {
     return (
@@ -107,6 +108,17 @@ export function CaseStudy({ slug }: { slug: string }) {
               )}
             </div>
           </Reveal>
+
+          {testimonial && (
+            <Reveal delay={200} className="mt-16 border-t border-border pt-10">
+              <Quote className="h-7 w-7 text-primary/50" />
+              <p className="mt-4 text-lg leading-relaxed">« {testimonial.quote} »</p>
+              <p className="mt-4 text-sm font-semibold">
+                {testimonial.name}
+                <span className="font-normal text-muted-foreground"> — {testimonial.role}, {project.name}</span>
+              </p>
+            </Reveal>
+          )}
         </section>
 
         <section className="border-t border-border bg-card/40">

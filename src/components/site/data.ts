@@ -7,6 +7,48 @@ export const PHONE = "+212 6 63 39 40 14";
 export const PHONE_TEL = "+212663394014";
 export const PHONE_WA = "212663394014";
 
+export type Testimonial = {
+  name: string;
+  role: string;
+  company: string;
+  city?: string;
+  quote: string;
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Samir",
+    role: "Fondateur",
+    company: "Volt Sports Water",
+    quote:
+      "On avait besoin d'un site qui reflète l'image de la marque, pas d'un template. Le formulaire de demande d'offre B2B nous ramène des clubs de sport chaque semaine. Réactif et carré sur les délais.",
+  },
+  {
+    name: "Ahmed",
+    role: "Gérant",
+    company: "Taj Auto Accessoire",
+    city: "Casablanca",
+    quote:
+      "Notre catalogue est enfin en ligne avec les filtres par marque. Les clients commandent directement au lieu d'appeler pour demander si on a la pièce. Livré dans les temps annoncés.",
+  },
+  {
+    name: "Ali",
+    role: "Direction",
+    company: "Hôtel Ryad",
+    city: "Nador",
+    quote:
+      "Le site donne une vraie image de l'hôtel, avec la carte du restaurant et les photos des chambres. Les gens réservent en connaissant déjà les lieux. Travail soigné et bon accompagnement.",
+  },
+  {
+    name: "Simo",
+    role: "Gérant",
+    company: "Pressing Zerktouni",
+    city: "Casablanca",
+    quote:
+      "La prise de commande en ligne nous a changé la vie, et on ressort maintenant sur Google quand les gens cherchent un pressing dans le quartier. Med comprend vite ce dont on a besoin.",
+  },
+];
+
 export type Project = {
   name: string;
   url: string;

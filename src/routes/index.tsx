@@ -8,6 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { CountUp } from "@/components/site/CountUp";
 import { Magnetic } from "@/components/site/Magnetic";
+import { Testimonials } from "@/components/site/Testimonials";
 import { PHONE, PHONE_TEL, PHONE_WA, projects, services } from "@/components/site/data";
 import { accentStyles } from "@/components/site/accent";
 import { pageHead, SITE_URL } from "@/lib/seo";
@@ -240,6 +241,8 @@ function Index() {
             </div>
           </div>
         </section>
+
+        <Testimonials />
 
         <section id="services" className="mx-auto max-w-6xl px-5 py-24">
           <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
