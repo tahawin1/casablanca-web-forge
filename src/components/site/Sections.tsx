@@ -7,6 +7,7 @@ import {
   Gauge,
   Sparkles,
   Send,
+  ArrowRight,
 } from "lucide-react";
 import {
   Accordion,
@@ -14,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Link } from "@tanstack/react-router";
 import { services, steps, faqs, technologies, PHONE_WA, type Accent } from "./data";
 import { accentStyles } from "./accent";
 import { Reveal } from "./Reveal";
@@ -53,6 +55,12 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  to={s.link}
+                  className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold ${a.text} hover:opacity-80`}
+                >
+                  En savoir plus <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </article>
               </Reveal>
             );

@@ -1,6 +1,6 @@
 import { Phone, MessageCircle, MapPin, Mail } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { PHONE, PHONE_TEL, PHONE_WA, cities } from "./data";
+import { PHONE, PHONE_TEL, PHONE_WA, cities, serviceLandings } from "./data";
 
 const links = [
   { to: "/realisations", label: "Réalisations" },
@@ -13,7 +13,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card/40">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:grid-cols-2 lg:grid-cols-3">
         <div>
           <Link to="/" className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-primary" />
@@ -37,6 +37,24 @@ export function Footer() {
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Nos services
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {serviceLandings.map((s) => (
+              <li key={s.slug}>
+                <Link
+                  to={`/${s.slug}`}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {s.eyebrow}
                 </Link>
               </li>
             ))}
@@ -104,9 +122,14 @@ export function Footer() {
       </div>
       <div className="flex flex-col items-center gap-2 border-t border-border px-5 py-6 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between">
         <span>© {new Date().getFullYear()} Najah Web — Tous droits réservés.</span>
-        <Link to="/mentions-legales" className="hover:text-foreground">
-          Mentions légales
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to="/website-design-casablanca" className="hover:text-foreground">
+            English
+          </Link>
+          <Link to="/mentions-legales" className="hover:text-foreground">
+            Mentions légales
+          </Link>
+        </div>
       </div>
     </footer>
   );

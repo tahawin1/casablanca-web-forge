@@ -1,0 +1,32 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ServiceLanding } from "@/components/site/ServiceLanding";
+import { serviceLandings } from "@/components/site/data";
+import { pageHead } from "@/lib/seo";
+
+const service = serviceLandings.find((s) => s.slug === "creation-site-vitrine")!;
+
+export const Route = createFileRoute("/creation-site-vitrine")({
+  head: () => ({
+    ...pageHead({
+      title: "Création de site vitrine à Casablanca — à partir de 3 500 DH | Najah Web",
+      description:
+        "Site vitrine professionnel pour indépendants, cabinets et petites entreprises à Casablanca : 5 à 8 pages, responsive, référencement local. Livré en 7 à 10 jours, devis gratuit.",
+      path: "/creation-site-vitrine",
+    }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: service.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
+  }),
+  component: () => <ServiceLanding service={service} />,
+});

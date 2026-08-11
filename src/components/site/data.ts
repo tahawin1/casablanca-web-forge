@@ -85,6 +85,7 @@ export const services: {
   items: string[];
   accent: Accent;
   popular?: boolean;
+  link: string;
 }[] = [
   {
     title: "Site vitrine",
@@ -92,6 +93,7 @@ export const services: {
     text: "Présence en ligne claire et crédible : présentation, services, galerie, contact et Google Maps.",
     items: ["5 à 8 pages", "Responsive mobile", "Référencement local", "Livré en 7 à 10 jours"],
     accent: "teal",
+    link: "/creation-site-vitrine",
   },
   {
     title: "Boutique en ligne",
@@ -100,6 +102,7 @@ export const services: {
     items: ["Catalogue illimité", "Paiement & livraison", "Gestion des stocks", "Suivi des commandes"],
     accent: "amber",
     popular: true,
+    link: "/creation-site-e-commerce",
   },
   {
     title: "Application sur mesure",
@@ -107,6 +110,7 @@ export const services: {
     text: "Réservation, espace client, tableau de bord ou outil métier développé exactement selon votre besoin.",
     items: ["Cahier des charges", "Développement dédié", "Espace administrateur", "Évolutions continues"],
     accent: "violet",
+    link: "/creation-application-web",
   },
 ];
 
@@ -186,6 +190,145 @@ export const cities: CityInfo[] = [
       q: "Comment se passe un projet à distance depuis Marrakech ?",
       a: "Tout se fait par téléphone, WhatsApp et visioconférence : cadrage du besoin, validation de la maquette, puis livraison du site. Aucun déplacement n'est nécessaire.",
     },
+  },
+];
+
+export type ServiceLandingInfo = {
+  slug: string;
+  eyebrow: string;
+  title: string;
+  intro: string;
+  price: string;
+  delay: string;
+  accent: Accent;
+  features: string[];
+  faqs: { q: string; a: string }[];
+};
+
+export const serviceLandings: ServiceLandingInfo[] = [
+  {
+    slug: "creation-site-vitrine",
+    eyebrow: "Site vitrine",
+    title: "Création de site vitrine à Casablanca",
+    intro:
+      "Un site vitrine professionnel présente clairement votre activité et donne envie de vous contacter. Idéal pour les indépendants, cabinets, artisans et petites entreprises qui veulent une présence en ligne crédible, sans complexité inutile.",
+    price: "à partir de 3 500 DH",
+    delay: "7 à 10 jours",
+    accent: "teal",
+    features: [
+      "5 à 8 pages (accueil, services, à propos, contact...)",
+      "Design responsive, adapté mobile et desktop",
+      "Formulaire de contact et intégration Google Maps",
+      "Référencement local de base sur Google",
+      "Nom de domaine et hébergement inclus la première année",
+    ],
+    faqs: [
+      {
+        q: "Qu'est-ce qu'un site vitrine exactement ?",
+        a: "Un site qui présente votre activité, vos services et vos coordonnées, sans fonctionnalité de vente en ligne. C'est la solution la plus simple et la plus rapide pour exister sur Google.",
+      },
+      {
+        q: "Combien de pages sont incluses ?",
+        a: "Entre 5 et 8 pages selon votre activité : accueil, services, à propos, réalisations, contact. Des pages supplémentaires peuvent être ajoutées sur devis.",
+      },
+      {
+        q: "Puis-je ajouter une boutique en ligne plus tard ?",
+        a: "Oui, un site vitrine peut évoluer vers une boutique en ligne par la suite, sans tout reconstruire depuis zéro.",
+      },
+    ],
+  },
+  {
+    slug: "creation-site-e-commerce",
+    eyebrow: "Boutique en ligne",
+    title: "Création de site e-commerce à Casablanca",
+    intro:
+      "Vendez vos produits en ligne 24h/24 avec une boutique e-commerce complète : catalogue, panier, paiement et livraison partout au Maroc. Une structure pensée pour convertir vos visiteurs en clients, pas juste pour être jolie.",
+    price: "à partir de 8 000 DH",
+    delay: "2 à 4 semaines",
+    accent: "amber",
+    features: [
+      "Catalogue produits illimité avec filtres et collections",
+      "Tunnel d'achat clair : panier, commande, confirmation",
+      "Paiement en ligne et/ou paiement à la livraison",
+      "Gestion des stocks et suivi des commandes",
+      "Interface d'administration simple à prendre en main",
+    ],
+    faqs: [
+      {
+        q: "Quels moyens de paiement peut-on proposer ?",
+        a: "Paiement à la livraison, virement, et intégration de solutions de paiement en ligne marocaines selon vos besoins et votre secteur.",
+      },
+      {
+        q: "Combien de produits puis-je mettre en ligne ?",
+        a: "Le catalogue n'est pas limité en nombre de produits. Le délai de livraison dépend surtout du volume de produits à intégrer au lancement.",
+      },
+      {
+        q: "Est-ce que je peux gérer mes stocks moi-même ?",
+        a: "Oui, une interface d'administration vous permet d'ajouter des produits, gérer les stocks et suivre les commandes sans compétence technique.",
+      },
+    ],
+  },
+  {
+    slug: "creation-application-web",
+    eyebrow: "Application sur mesure",
+    title: "Création d'application web sur mesure",
+    intro:
+      "Réservation en ligne, espace client, tableau de bord interne, outil métier : je développe l'application web qui correspond exactement à votre besoin, quand aucune solution toute faite ne convient à votre activité.",
+    price: "sur devis",
+    delay: "selon le cahier des charges",
+    accent: "violet",
+    features: [
+      "Cahier des charges détaillé avant tout développement",
+      "Développement sur mesure (React, base de données)",
+      "Espace administrateur pour gérer le contenu et les utilisateurs",
+      "Évolutions et nouvelles fonctionnalités possibles après livraison",
+      "Formation à la prise en main incluse",
+    ],
+    faqs: [
+      {
+        q: "Quel type de projet entre dans cette catégorie ?",
+        a: "Tout ce qui dépasse un site vitrine ou une boutique classique : plateforme de réservation, espace client, outil interne, tableau de bord, intégration avec vos outils existants.",
+      },
+      {
+        q: "Comment le prix est-il déterminé ?",
+        a: "Après un échange pour cadrer précisément votre besoin, je vous envoie un devis détaillé sous 24h, sans engagement.",
+      },
+      {
+        q: "Le code m'appartient-il ?",
+        a: "Oui, le code source et l'application développée vous appartiennent une fois le projet livré et payé.",
+      },
+    ],
+  },
+  {
+    slug: "refonte-site-web",
+    eyebrow: "Refonte",
+    title: "Refonte de site web à Casablanca",
+    intro:
+      "Site lent, design daté, mal adapté au mobile ou invisible sur Google ? Je modernise votre site existant : nouveau design, meilleures performances et structure optimisée pour le référencement, sans repartir de zéro sur votre contenu.",
+    price: "à partir de 3 500 DH",
+    delay: "7 à 10 jours",
+    accent: "teal",
+    features: [
+      "Audit gratuit de votre site actuel",
+      "Nouveau design moderne et responsive",
+      "Reprise de votre contenu existant",
+      "Amélioration de la vitesse de chargement",
+      "Optimisation SEO incluse",
+    ],
+    faqs: [
+      {
+        q: "Comment savoir si mon site a besoin d'une refonte ?",
+        a: "Les signaux les plus courants : site lent, mal affiché sur mobile, design daté, ou difficile à trouver sur Google. Un audit gratuit permet d'y voir clair.",
+      },
+      {
+        q: "Vais-je perdre mon contenu actuel ?",
+        a: "Non, votre contenu (textes, images, coordonnées) est repris et réorganisé dans la nouvelle version du site.",
+      },
+      {
+        q: "Est-ce que je garde mon nom de domaine ?",
+        a: "Oui, votre nom de domaine actuel est conservé, seul le site qu'il pointe change.",
+      },
+    ],
   },
 ];
 
