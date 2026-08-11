@@ -16,8 +16,20 @@ const ScrollTrigger =
   scrollTriggerAny.default ??
   (scrollTriggerNS as unknown as typeof scrollTriggerNS.ScrollTrigger);
 
-if (typeof window !== "undefined" && gsap && ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  // TEMP DIAGNOSTIC — remove once the ScrollTrigger registration bug is confirmed fixed.
+  console.log("[gsap-debug]", {
+    hasGsap: !!gsap,
+    hasScrollTrigger: !!ScrollTrigger,
+    gsapVersion: gsap?.version,
+    registerPluginType: typeof gsap?.registerPlugin,
+    scrollTriggerType: typeof ScrollTrigger,
+    scrollTriggerName: ScrollTrigger?.name,
+  });
+  if (gsap && ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    console.log("[gsap-debug] after registerPlugin, pluginsRegistered:", !!gsap.core?.globals?.().ScrollTrigger);
+  }
 }
 
 export { gsap, ScrollTrigger };
