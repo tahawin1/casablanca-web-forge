@@ -23,15 +23,15 @@ export function Starfield() {
     let dots: Dot[] = [];
     let raf = 0;
     let running = true;
+    let started = false;
 
-    function resize() {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const { innerWidth: w, innerHeight: h } = window;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = `${w}px`;
-      canvas.style.height = `${h}px`;
+    function applySize(w: number, h: number) {
+      const c = canvasRef.current;
+      if (!c || w === 0 || h === 0) return;
+      c.width = w * dpr;
+      c.height = h * dpr;
+      c.style.width = `${w}px`;
+      c.style.height = `${h}px`;
       const count = Math.round((w * h) / 9000);
       dots = Array.from({ length: count }, () => ({
         x: Math.random() * w,
@@ -44,14 +44,15 @@ export function Starfield() {
     }
 
     function draw(time: number) {
-      const canvas = canvasRef.current;
-      if (!canvas || !ctx) return;
-      const w = canvas.width / dpr;
-      const h = canvas.height / dpr;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const c = canvasRef.current;
+      if (!c) return;
+      const h = c.height / dpr;
+      ctx.clearRect(0, 0, c.width, c.height);
       for (const d of dots) {
-        d.y -= d.speed;
-        if (d.y < -4) d.y = h + 4;
+        if (!reduceMotion) {
+          d.y -= d.speed;
+          if (d.y < -4) d.y = h + 4;
+        }
         const twinkle = reduceMotion ? 1 : 0.6 + 0.4 * Math.sin(time / 900 + d.phase);
         ctx.beginPath();
         ctx.arc(d.x * dpr, d.y * dpr, d.r, 0, Math.PI * 2);
@@ -61,21 +62,29 @@ export function Starfield() {
       if (!reduceMotion && running) raf = requestAnimationFrame(draw);
     }
 
+    const ro = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+      applySize(width, height);
+      if (reduceMotion) {
+        draw(0);
+      } else if (!started) {
+        started = true;
+        draw(performance.now());
+      }
+    });
+    ro.observe(document.documentElement);
+
     function handleVisibility() {
       running = document.visibilityState === "visible";
-      if (running && !reduceMotion) raf = requestAnimationFrame(draw);
+      if (running && !reduceMotion && started) raf = requestAnimationFrame(draw);
       else cancelAnimationFrame(raf);
     }
-
-    resize();
-    draw(0);
-    window.addEventListener("resize", resize);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       running = false;
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
       document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
