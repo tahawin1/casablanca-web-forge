@@ -1,4 +1,4 @@
-export const SITE_URL = "https://casablanca-web-forge.vercel.app";
+export const SITE_URL = "https://www.najahweb.ma";
 export const SITE_NAME = "Najah Web";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 

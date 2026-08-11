@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://casablanca-web-forge.vercel.app/sitemap.xml
+Sitemap: https://www.najahweb.ma/sitemap.xml
