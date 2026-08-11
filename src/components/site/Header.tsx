@@ -5,6 +5,7 @@ import { PHONE, PHONE_TEL } from "./data";
 
 const links = [
   { to: "/realisations", label: "Réalisations" },
+  { to: "/a-propos", label: "À propos" },
   { to: "/services", label: "Services" },
   { to: "/methode", label: "Méthode" },
   { to: "/faq", label: "FAQ" },

@@ -64,4 +64,8 @@
     <loc>https://casablanca-web-forge.vercel.app/website-design-casablanca</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://casablanca-web-forge.vercel.app/a-propos</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>

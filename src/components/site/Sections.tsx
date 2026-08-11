@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import {
   Check,
+  X,
   MapPin,
   Clock,
   ShieldCheck,
@@ -8,6 +9,7 @@ import {
   Sparkles,
   Send,
   ArrowRight,
+  RefreshCw,
 } from "lucide-react";
 import {
   Accordion,
@@ -16,7 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Link } from "@tanstack/react-router";
-import { services, steps, faqs, technologies, PHONE_WA, type Accent } from "./data";
+import { services, steps, faqs, technologies, maintenance, PHONE_WA, PHONE_TEL, FORMSPREE_ENDPOINT, type Accent } from "./data";
 import { accentStyles } from "./accent";
 import { Reveal } from "./Reveal";
 import { AnimatedLine } from "./AnimatedLine";
@@ -54,6 +56,12 @@ export function Services() {
                       <span className="text-muted-foreground">{i}</span>
                     </li>
                   ))}
+                  {s.notIncluded.map((i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm">
+                      <X className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/50" />
+                      <span className="text-muted-foreground/70">{i}</span>
+                    </li>
+                  ))}
                 </ul>
                 <Link
                   to={s.link}
@@ -73,6 +81,32 @@ export function Services() {
             <span key={t}>{t}</span>
           ))}
         </div>
+
+        <Reveal delay={200} className="surface-card mt-12 flex flex-col items-start gap-6 rounded-2xl p-7 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-4">
+            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <RefreshCw className="h-5 w-5" />
+            </span>
+            <div>
+              <h3 className="text-lg font-semibold">Pack Maintenance — {maintenance.price}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{maintenance.text}</p>
+              <ul className="mt-3 grid gap-1.5 sm:grid-cols-2">
+                {maintenance.items.map((i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                    {i}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-secondary"
+          >
+            En parler
+          </a>
+        </Reveal>
       </div>
     </section>
   );
@@ -184,20 +218,39 @@ const projectTypes = ["Site vitrine", "Boutique en ligne", "Application sur mesu
 export function ContactForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [projectType, setProjectType] = useState(projectTypes[0]);
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setSending(true);
+
+    if (FORMSPREE_ENDPOINT) {
+      try {
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ name, phone, email, projectType, message }),
+        });
+      } catch {
+        // The WhatsApp fallback below still fires even if this fails, so no
+        // lead is silently lost just because the email notification failed.
+      }
+    }
+
     const text = [
       `Bonjour, je m'appelle ${name || "—"}.`,
       phone ? `Mon numéro : ${phone}.` : null,
+      email ? `Mon email : ${email}.` : null,
       `Type de projet : ${projectType}.`,
       message ? `Mon projet : ${message}` : null,
     ]
       .filter(Boolean)
       .join(" ");
     window.open(`https://wa.me/${PHONE_WA}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    setSending(false);
   }
 
   return (
@@ -227,6 +280,19 @@ export function ContactForm() {
             className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
           />
         </div>
+      </div>
+      <div className="grid gap-1.5">
+        <label htmlFor="email" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          Email <span className="normal-case text-muted-foreground/60">(optionnel)</span>
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="vous@entreprise.com"
+          className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-primary/40 focus:ring-2"
+        />
       </div>
       <div className="grid gap-1.5">
         <label htmlFor="projectType" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -260,10 +326,11 @@ export function ContactForm() {
       </div>
       <button
         type="submit"
-        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-[var(--shadow-ember)] transition-transform hover:-translate-y-0.5"
+        disabled={sending}
+        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-[var(--shadow-ember)] transition-transform hover:-translate-y-0.5 disabled:opacity-60"
       >
         <Send className="h-4 w-4" />
-        Envoyer sur WhatsApp
+        {sending ? "Envoi..." : "Envoyer sur WhatsApp"}
       </button>
       <p className="text-xs text-muted-foreground">
         Ouvre WhatsApp avec votre message pré-rempli, prêt à envoyer.

@@ -13,7 +13,10 @@ export function CountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  // Start at the final value so the server-rendered HTML (and any visitor
+  // whose JS hasn't run yet) shows the real number, not "0". The animation
+  // below is a pure enhancement layered on top once it scrolls into view.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     const el = ref.current;

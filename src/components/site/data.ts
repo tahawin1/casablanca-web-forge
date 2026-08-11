@@ -1,3 +1,8 @@
+// Set to a Formspree endpoint (e.g. "https://formspree.io/f/xxxxxxx") to also
+// email-notify new contact form submissions. Leave empty to skip — the form
+// still works via WhatsApp either way.
+export const FORMSPREE_ENDPOINT = "";
+
 export const PHONE = "+212 6 63 39 40 14";
 export const PHONE_TEL = "+212663394014";
 export const PHONE_WA = "212663394014";
@@ -83,6 +88,7 @@ export const services: {
   price: string;
   text: string;
   items: string[];
+  notIncluded: string[];
   accent: Accent;
   popular?: boolean;
   link: string;
@@ -91,7 +97,14 @@ export const services: {
     title: "Site vitrine",
     price: "à partir de 3 500 DH",
     text: "Présence en ligne claire et crédible : présentation, services, galerie, contact et Google Maps.",
-    items: ["5 à 8 pages", "Responsive mobile", "Référencement local", "Livré en 7 à 10 jours"],
+    items: [
+      "5 à 8 pages",
+      "Responsive mobile",
+      "Référencement local",
+      "Livré en 7 à 10 jours",
+      "2 séries de révisions incluses",
+    ],
+    notIncluded: ["Rédaction des textes (vous les fournissez, aide possible sur devis)", "Séance photo professionnelle"],
     accent: "teal",
     link: "/creation-site-vitrine",
   },
@@ -99,7 +112,14 @@ export const services: {
     title: "Boutique en ligne",
     price: "à partir de 8 000 DH",
     text: "Vendez vos produits en ligne : catalogue, filtres, panier, paiement et livraison partout au Maroc.",
-    items: ["Catalogue illimité", "Paiement & livraison", "Gestion des stocks", "Suivi des commandes"],
+    items: [
+      "Catalogue illimité",
+      "Paiement & livraison",
+      "Gestion des stocks",
+      "Suivi des commandes",
+      "2 séries de révisions incluses",
+    ],
+    notIncluded: ["Photos et descriptions produits (vous les fournissez)", "Frais des prestataires de paiement en ligne"],
     accent: "amber",
     popular: true,
     link: "/creation-site-e-commerce",
@@ -109,10 +129,23 @@ export const services: {
     price: "sur devis",
     text: "Réservation, espace client, tableau de bord ou outil métier développé exactement selon votre besoin.",
     items: ["Cahier des charges", "Développement dédié", "Espace administrateur", "Évolutions continues"],
+    notIncluded: ["Contenu métier spécifique (fourni par vous ou cadré ensemble)"],
     accent: "violet",
     link: "/creation-application-web",
   },
 ];
+
+export const maintenance = {
+  price: "300 à 500 DH / mois",
+  text: "Pour ne jamais avoir à vous soucier de votre site après la livraison.",
+  items: [
+    "Hébergement et nom de domaine",
+    "Sauvegardes régulières",
+    "Petites modifications de contenu (textes, photos, tarifs)",
+    "Surveillance de sécurité",
+    "Support prioritaire par téléphone ou WhatsApp",
+  ],
+};
 
 export const technologies = [
   "React",
@@ -352,5 +385,13 @@ export const faqs = [
   {
     q: "Comment se passe le paiement ?",
     a: "50 % à la commande, 50 % à la mise en ligne. Facture officielle fournie pour les entreprises.",
+  },
+  {
+    q: "Le site et le nom de domaine m'appartiennent-ils ?",
+    a: "Oui, sans exception. Le nom de domaine est enregistré à votre nom, et le code du site vous appartient entièrement une fois le projet livré et payé. Vous n'êtes jamais dépendant de moi pour continuer à faire vivre votre site.",
+  },
+  {
+    q: "Combien de révisions sont incluses ?",
+    a: "Deux séries de révisions sont incluses sur la maquette avant le développement, pour ajuster le design et les textes. Des retouches ponctuelles après la mise en ligne sont possibles pendant la période de suivi.",
   },
 ];

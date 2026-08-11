@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
 });
 
 const results = [
-  { value: 4, suffix: "+", l: "sites livrés" },
+  { value: 4, suffix: "", l: "sites en ligne" },
   { value: 7, suffix: "-10 j", l: "délai vitrine" },
   { value: 100, suffix: " %", l: "responsive mobile" },
 ];
