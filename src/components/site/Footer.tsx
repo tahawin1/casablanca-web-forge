@@ -1,6 +1,6 @@
 import { Phone, MessageCircle, MapPin, Mail } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { PHONE, PHONE_TEL, PHONE_WA } from "./data";
+import { PHONE, PHONE_TEL, PHONE_WA, cities } from "./data";
 
 const links = [
   { to: "/realisations", label: "Réalisations" },
@@ -37,6 +37,24 @@ export function Footer() {
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Zones desservies
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {cities.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  to={`/creation-site-web-${c.slug}`}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Création de site web à {c.name}
                 </Link>
               </li>
             ))}

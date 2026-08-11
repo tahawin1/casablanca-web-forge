@@ -11,6 +11,10 @@ export type Project = {
   image: string;
   summary: string;
   highlights: string[];
+  caseStudySlug?: string;
+  challenge?: string;
+  solution?: string;
+  techUsed?: string[];
 };
 
 export const projects: Project[] = [
@@ -46,6 +50,12 @@ export const projects: Project[] = [
     summary:
       "Hôtel 3★ au centre de Nador. Site vitrine élégant avec présentation des chambres, carte du restaurant panoramique et contact direct.",
     highlights: ["Carte du restaurant", "Galerie photos", "Contact & itinéraire"],
+    caseStudySlug: "hotel-ryad",
+    challenge:
+      "L'hôtel n'avait pas de présence en ligne propre : les clients passaient uniquement par les plateformes de réservation tierces, avec leurs commissions, et n'avaient aucun moyen de découvrir le restaurant panoramique ou de contacter directement l'établissement.",
+    solution:
+      "Un site vitrine élégant présentant les chambres, une carte de restaurant mise en valeur avec des photos, une page contact avec itinéraire et appel direct en un clic, et une structure pensée pour rassurer un visiteur qui découvre l'hôtel pour la première fois.",
+    techUsed: ["React", "Vite", "Tailwind CSS", "Vercel"],
   },
   {
     name: "Pressing Zerktouni",
@@ -57,6 +67,12 @@ export const projects: Project[] = [
     summary:
       "Pressing du Bd Mohamed Zerktouni. Prise de commande en ligne, service express 6h, ramassage et livraison gratuits.",
     highlights: ["Commande en ligne", "Tarifs par service", "SEO local Casablanca"],
+    caseStudySlug: "pressing-zerktouni",
+    challenge:
+      "Le pressing recevait ses commandes uniquement par téléphone ou en boutique, sans grille tarifaire claire en ligne, et restait invisible sur Google face à des concurrents mieux référencés sur les recherches locales à Casablanca.",
+    solution:
+      "Un site avec prise de commande en ligne, une grille tarifaire par service claire et à jour, la mise en avant du service express 6h et du ramassage/livraison gratuits, et une structure optimisée pour le référencement local (« pressing Casablanca », « nettoyage à sec Zerktouni »).",
+    techUsed: ["React", "Vite", "Tailwind CSS", "Vercel"],
   },
 ];
 
@@ -126,6 +142,50 @@ export const steps: { n: string; t: string; d: string; accent: Accent }[] = [
     t: "Mise en ligne",
     d: "Nom de domaine, hébergement, e-mails pro et formation à la prise en main.",
     accent: "teal",
+  },
+];
+
+export type CityInfo = {
+  slug: string;
+  name: string;
+  intro: string;
+  remote: boolean;
+  faq: { q: string; a: string };
+};
+
+export const cities: CityInfo[] = [
+  {
+    slug: "casablanca",
+    name: "Casablanca",
+    remote: false,
+    intro:
+      "Basé à Casablanca, je conçois et développe des sites vitrines, boutiques en ligne et applications sur mesure pour les entreprises et indépendants de la ville. Rendez-vous possible en personne, devis gratuit sous 24h.",
+    faq: {
+      q: "Peut-on se rencontrer en personne à Casablanca ?",
+      a: "Oui, je suis basé à Casablanca et un rendez-vous en personne est possible pour cadrer votre projet, en plus des échanges par téléphone ou WhatsApp.",
+    },
+  },
+  {
+    slug: "rabat",
+    name: "Rabat",
+    remote: true,
+    intro:
+      "Je conçois et développe des sites vitrines, boutiques en ligne et applications sur mesure pour les entreprises et indépendants de Rabat. Basé à Casablanca, je travaille avec mes clients de Rabat entièrement à distance.",
+    faq: {
+      q: "Comment se passe un projet à distance depuis Rabat ?",
+      a: "Tout se fait par téléphone, WhatsApp et visioconférence : cadrage du besoin, validation de la maquette, puis livraison du site. Aucun déplacement n'est nécessaire.",
+    },
+  },
+  {
+    slug: "marrakech",
+    name: "Marrakech",
+    remote: true,
+    intro:
+      "Je conçois et développe des sites vitrines, boutiques en ligne et applications sur mesure pour les entreprises et indépendants de Marrakech. Basé à Casablanca, je travaille avec mes clients de Marrakech entièrement à distance.",
+    faq: {
+      q: "Comment se passe un projet à distance depuis Marrakech ?",
+      a: "Tout se fait par téléphone, WhatsApp et visioconférence : cadrage du besoin, validation de la maquette, puis livraison du site. Aucun déplacement n'est nécessaire.",
+    },
   },
 ];
 
