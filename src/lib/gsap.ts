@@ -30,6 +30,9 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
     console.log("[gsap-debug] after registerPlugin, pluginsRegistered:", !!gsap.core?.globals?.().ScrollTrigger);
   }
+  // TEMP: expose for interactive debugging, remove with the rest of this block.
+  (window as unknown as Record<string, unknown>).__gsap = gsap;
+  (window as unknown as Record<string, unknown>).__ScrollTrigger = ScrollTrigger;
 }
 
 export { gsap, ScrollTrigger };
