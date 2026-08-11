@@ -10,29 +10,35 @@ type ScrollTriggerModule = typeof scrollTriggerNS & {
 const gsapAny = gsapNS as GsapNS;
 const scrollTriggerAny = scrollTriggerNS as ScrollTriggerModule;
 
-const gsap = gsapAny.gsap ?? gsapAny.default ?? (gsapNS as unknown as typeof gsapNS.gsap);
-const ScrollTrigger =
+const localGsap = gsapAny.gsap ?? gsapAny.default ?? (gsapNS as unknown as typeof gsapNS.gsap);
+const localScrollTrigger =
   scrollTriggerAny.ScrollTrigger ??
   scrollTriggerAny.default ??
   (scrollTriggerNS as unknown as typeof scrollTriggerNS.ScrollTrigger);
 
+// Route-based code splitting can end up bundling this module (and gsap
+// itself) into more than one chunk, producing separate gsap instances that
+// each think they're "the" instance. registerPlugin on one doesn't help the
+// others. Use window as a cross-chunk coordination point so every copy of
+// this module converges on whichever instance registered first.
+type GsapWindow = typeof window & {
+  __gsapInstance?: typeof localGsap;
+  __scrollTriggerInstance?: typeof localScrollTrigger;
+};
+
+let gsap = localGsap;
+let ScrollTrigger = localScrollTrigger;
+
 if (typeof window !== "undefined") {
-  // TEMP DIAGNOSTIC — remove once the ScrollTrigger registration bug is confirmed fixed.
-  console.log("[gsap-debug]", {
-    hasGsap: !!gsap,
-    hasScrollTrigger: !!ScrollTrigger,
-    gsapVersion: gsap?.version,
-    registerPluginType: typeof gsap?.registerPlugin,
-    scrollTriggerType: typeof ScrollTrigger,
-    scrollTriggerName: ScrollTrigger?.name,
-  });
-  if (gsap && ScrollTrigger) {
+  const w = window as GsapWindow;
+  if (w.__gsapInstance && w.__scrollTriggerInstance) {
+    gsap = w.__gsapInstance;
+    ScrollTrigger = w.__scrollTriggerInstance;
+  } else if (gsap && ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
-    console.log("[gsap-debug] after registerPlugin, pluginsRegistered:", !!gsap.core?.globals?.().ScrollTrigger);
+    w.__gsapInstance = gsap;
+    w.__scrollTriggerInstance = ScrollTrigger;
   }
-  // TEMP: expose for interactive debugging, remove with the rest of this block.
-  (window as unknown as Record<string, unknown>).__gsap = gsap;
-  (window as unknown as Record<string, unknown>).__ScrollTrigger = ScrollTrigger;
 }
 
 export { gsap, ScrollTrigger };
