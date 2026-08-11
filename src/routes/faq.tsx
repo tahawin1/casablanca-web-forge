@@ -10,7 +10,7 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     ...pageHead({
-      title: "Questions fréquentes sur la création de site web | Studio Web · Casablanca",
+      title: "Questions fréquentes sur la création de site web | Najah Web",
       description:
         "Délais de création, hébergement, modification du site, zone d'intervention, paiement : les réponses aux questions les plus posées sur la création d'un site web à Casablanca.",
       path: "/faq",

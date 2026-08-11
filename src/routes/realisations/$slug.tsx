@@ -12,11 +12,11 @@ export const Route = createFileRoute("/realisations/$slug")({
     const project = projects.find((p) => p.caseStudySlug === params.slug);
     return pageHead({
       title: project
-        ? `${project.name} — Étude de cas | Studio Web · Casablanca`
-        : "Étude de cas | Studio Web · Casablanca",
+        ? `${project.name} — Étude de cas | Najah Web`
+        : "Étude de cas | Najah Web",
       description:
         project?.summary ??
-        "Étude de cas d'un site web créé par Studio Web Casablanca : besoin, solution, technologies utilisées.",
+        "Étude de cas d'un site web créé par Najah Web : besoin, solution, technologies utilisées.",
       path: `/realisations/${params.slug}`,
     });
   },

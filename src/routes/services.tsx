@@ -7,7 +7,7 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
   head: () => pageHead({
-    title: "Tarifs création de site web à Casablanca | Studio Web · Casablanca",
+    title: "Tarifs création de site web à Casablanca | Najah Web",
     description:
       "Prix pour la création d'un site vitrine, d'une boutique en ligne ou d'une application sur mesure à Casablanca : contenu inclus, tarifs de départ et délais de livraison.",
     path: "/services",

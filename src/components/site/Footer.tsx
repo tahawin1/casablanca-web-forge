@@ -17,7 +17,7 @@ export function Footer() {
         <div>
           <Link to="/" className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-primary" />
-            <span className="text-sm font-bold tracking-tight">Studio Web · Casablanca</span>
+            <span className="text-sm font-bold tracking-tight">Najah Web</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Sites vitrines, boutiques en ligne et applications sur mesure, conçus et développés à
@@ -103,7 +103,7 @@ export function Footer() {
         </div>
       </div>
       <div className="flex flex-col items-center gap-2 border-t border-border px-5 py-6 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between">
-        <span>© {new Date().getFullYear()} Studio Web · Casablanca — Tous droits réservés.</span>
+        <span>© {new Date().getFullYear()} Najah Web — Tous droits réservés.</span>
         <Link to="/mentions-legales" className="hover:text-foreground">
           Mentions légales
         </Link>

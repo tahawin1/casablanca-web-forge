@@ -18,7 +18,7 @@ export function Header() {
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3">
         <Link to="/" className="flex min-w-0 items-center gap-2">
           <span className="h-2 w-2 shrink-0 rounded-full bg-primary shadow-[0_0_12px_var(--primary)]" />
-          <span className="truncate text-sm font-bold tracking-tight">Studio Web · Casablanca</span>
+          <span className="truncate text-sm font-bold tracking-tight">Najah Web</span>
         </Link>
         <nav className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (

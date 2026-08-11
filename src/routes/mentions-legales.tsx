@@ -8,7 +8,7 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/mentions-legales")({
   head: () => {
     const head = pageHead({
-      title: "Mentions légales | Studio Web · Casablanca",
+      title: "Mentions légales | Najah Web",
       description: "Mentions légales et informations sur l'éditeur du site.",
       path: "/mentions-legales",
     });
@@ -28,7 +28,7 @@ function MentionsLegalesPage() {
             <div>
               <h2 className="text-lg font-semibold text-foreground">Éditeur du site</h2>
               <p className="mt-3">
-                Le site « Studio Web · Casablanca » est édité par un professionnel indépendant
+                Le site « Najah Web » est édité par un professionnel indépendant
                 (auto-entrepreneur) exerçant une activité de création de sites web, basé à
                 Casablanca, Maroc.
               </p>

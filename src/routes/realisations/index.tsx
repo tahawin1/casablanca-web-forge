@@ -8,9 +8,9 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/realisations")({
   head: () => pageHead({
-    title: "Réalisations : sites web créés à Casablanca et au Maroc | Studio Web · Casablanca",
+    title: "Réalisations : sites web créés à Casablanca et au Maroc | Najah Web",
     description:
-      "Découvrez les sites vitrines, boutiques en ligne et sites de marque déjà livrés au Maroc et à l'international : exemples concrets de création de site web par Studio Web Casablanca.",
+      "Découvrez les sites vitrines, boutiques en ligne et sites de marque déjà livrés au Maroc et à l'international : exemples concrets de création de site web par Najah Web.",
     path: "/realisations",
   }),
   component: RealisationsPage,

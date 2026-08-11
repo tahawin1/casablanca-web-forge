@@ -7,7 +7,7 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/methode")({
   head: () => pageHead({
-    title: "Comment se déroule la création de votre site web | Studio Web · Casablanca",
+    title: "Comment se déroule la création de votre site web | Najah Web",
     description:
       "De l'appel découverte à la mise en ligne : les 4 étapes du processus de création de site web à Casablanca, sans jargon ni surprise.",
     path: "/methode",

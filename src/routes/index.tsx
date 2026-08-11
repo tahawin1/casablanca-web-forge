@@ -15,7 +15,7 @@ import { pageHead, SITE_URL } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   head: () => ({
     ...pageHead({
-      title: "Création de site web à Casablanca — Devis gratuit | Studio Web · Casablanca",
+      title: "Création de site web à Casablanca — Devis gratuit | Najah Web",
       description:
         "Développeur web à Casablanca : création de sites vitrines, boutiques en ligne et applications sur mesure. Sites rapides, responsives et optimisés pour Google. Devis gratuit sous 24h.",
       path: "/",
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           "@id": `${SITE_URL}/#business`,
-          name: "Studio Web Casablanca",
+          name: "Najah Web",
           description:
             "Création de sites web, boutiques en ligne et applications sur mesure à Casablanca.",
           url: SITE_URL,

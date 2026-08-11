@@ -8,7 +8,7 @@ const city = cities.find((c) => c.slug === "marrakech")!;
 export const Route = createFileRoute("/creation-site-web-marrakech")({
   head: () => ({
     ...pageHead({
-      title: "Création de site web à Marrakech — Sites vitrines & e-commerce | Studio Web · Casablanca",
+      title: "Création de site web à Marrakech — Sites vitrines & e-commerce | Najah Web",
       description:
         "Développeur web pour les entreprises de Marrakech : sites vitrines, boutiques en ligne et applications sur mesure, projet mené entièrement à distance. Devis gratuit sous 24h.",
       path: "/creation-site-web-marrakech",
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/creation-site-web-marrakech")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          name: "Studio Web Casablanca",
+          name: "Najah Web",
           url: `${SITE_URL}/creation-site-web-marrakech`,
           telephone: PHONE,
           areaServed: "Marrakech",
