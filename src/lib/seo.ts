@@ -1,6 +1,7 @@
 export const SITE_URL = "https://www.najahweb.ma";
 export const SITE_NAME = "Najah Web";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const GA_MEASUREMENT_ID = "G-ZWQVNLH16W";
 
 export function pageHead({
   title,

@@ -14,7 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { WhatsAppFloat } from "../components/site/WhatsAppFloat";
 import { Preloader } from "../components/site/Preloader";
 import { Starfield } from "../components/site/Starfield";
-import { OG_IMAGE, SITE_NAME } from "../lib/seo";
+import { OG_IMAGE, SITE_NAME, GA_MEASUREMENT_ID } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -112,6 +112,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`, async: true },
+      {
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`,
+      },
     ],
   }),
   shellComponent: RootShell,
