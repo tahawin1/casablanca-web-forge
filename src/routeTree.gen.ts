@@ -21,6 +21,7 @@ import { Route as CreationSiteWebRabatRouteImport } from './routes/creation-site
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as MethodeRouteImport } from './routes/methode'
+import { Route as PrixCreationSiteWebMarocRouteImport } from './routes/prix-creation-site-web-maroc'
 import { Route as RefonteSiteWebRouteImport } from './routes/refonte-site-web'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as WebsiteDesignCasablancaRouteImport } from './routes/website-design-casablanca'
@@ -89,6 +90,12 @@ const MethodeRoute = MethodeRouteImport.update({
   path: '/methode',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrixCreationSiteWebMarocRoute =
+  PrixCreationSiteWebMarocRouteImport.update({
+    id: '/prix-creation-site-web-maroc',
+    path: '/prix-creation-site-web-maroc',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const RefonteSiteWebRoute = RefonteSiteWebRouteImport.update({
   id: '/refonte-site-web',
   path: '/refonte-site-web',
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/methode': typeof MethodeRoute
+  '/prix-creation-site-web-maroc': typeof PrixCreationSiteWebMarocRoute
   '/refonte-site-web': typeof RefonteSiteWebRoute
   '/services': typeof ServicesRoute
   '/website-design-casablanca': typeof WebsiteDesignCasablancaRoute
@@ -147,6 +155,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/methode': typeof MethodeRoute
+  '/prix-creation-site-web-maroc': typeof PrixCreationSiteWebMarocRoute
   '/refonte-site-web': typeof RefonteSiteWebRoute
   '/services': typeof ServicesRoute
   '/website-design-casablanca': typeof WebsiteDesignCasablancaRoute
@@ -167,6 +176,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/methode': typeof MethodeRoute
+  '/prix-creation-site-web-maroc': typeof PrixCreationSiteWebMarocRoute
   '/refonte-site-web': typeof RefonteSiteWebRoute
   '/services': typeof ServicesRoute
   '/website-design-casablanca': typeof WebsiteDesignCasablancaRoute
@@ -188,6 +198,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/mentions-legales'
     | '/methode'
+    | '/prix-creation-site-web-maroc'
     | '/refonte-site-web'
     | '/services'
     | '/website-design-casablanca'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/mentions-legales'
     | '/methode'
+    | '/prix-creation-site-web-maroc'
     | '/refonte-site-web'
     | '/services'
     | '/website-design-casablanca'
@@ -226,6 +238,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/mentions-legales'
     | '/methode'
+    | '/prix-creation-site-web-maroc'
     | '/refonte-site-web'
     | '/services'
     | '/website-design-casablanca'
@@ -246,6 +259,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   MethodeRoute: typeof MethodeRoute
+  PrixCreationSiteWebMarocRoute: typeof PrixCreationSiteWebMarocRoute
   RefonteSiteWebRoute: typeof RefonteSiteWebRoute
   ServicesRoute: typeof ServicesRoute
   WebsiteDesignCasablancaRoute: typeof WebsiteDesignCasablancaRoute
@@ -339,6 +353,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MethodeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/prix-creation-site-web-maroc': {
+      id: '/prix-creation-site-web-maroc'
+      path: '/prix-creation-site-web-maroc'
+      fullPath: '/prix-creation-site-web-maroc'
+      preLoaderRoute: typeof PrixCreationSiteWebMarocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/refonte-site-web': {
       id: '/refonte-site-web'
       path: '/refonte-site-web'
@@ -390,6 +411,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   MethodeRoute: MethodeRoute,
+  PrixCreationSiteWebMarocRoute: PrixCreationSiteWebMarocRoute,
   RefonteSiteWebRoute: RefonteSiteWebRoute,
   ServicesRoute: ServicesRoute,
   WebsiteDesignCasablancaRoute: WebsiteDesignCasablancaRoute,

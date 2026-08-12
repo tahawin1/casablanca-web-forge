@@ -6,6 +6,7 @@ const links = [
   { to: "/realisations", label: "Réalisations" },
   { to: "/a-propos", label: "À propos" },
   { to: "/services", label: "Services" },
+  { to: "/prix-creation-site-web-maroc", label: "Tarifs & prix" },
   { to: "/methode", label: "Méthode" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },

@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Création de sites web à Casablanca : sites vitrines, boutiques en ligne et applications sur mesure, rapides et optimisés pour Google. Devis gratuit.",
       },
-      { name: "keywords", content: "création site web Casablanca, développeur web Maroc, création site internet, site vitrine, boutique en ligne, agence web Casablanca" },
+      { name: "keywords", content: "création site web Casablanca, développeur web freelance Casablanca, développeur web Maroc, prix création site web Maroc, création site internet, site vitrine, boutique en ligne, agence web Casablanca" },
       { property: "og:title", content: "Création de site web à Casablanca | " + SITE_NAME },
       {
         property: "og:description",

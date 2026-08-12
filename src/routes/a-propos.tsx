@@ -10,9 +10,9 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/a-propos")({
   head: () =>
     pageHead({
-      title: "À propos — Développeur web & ingénieur cybersécurité | Najah Web",
+      title: "Développeur web freelance à Casablanca | Najah Web",
       description:
-        "Sites web conçus par un ingénieur en cybersécurité : HTTPS, formulaires protégés, données clients traitées avec rigueur dès la conception, pas ajoutées après coup.",
+        "Développeur web freelance basé à Casablanca, formation d'ingénieur en cybersécurité : HTTPS, formulaires protégés, données clients traitées avec rigueur dès la conception.",
       path: "/a-propos",
     }),
   component: AboutPage,
