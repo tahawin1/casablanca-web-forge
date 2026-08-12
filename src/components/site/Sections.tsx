@@ -116,25 +116,25 @@ const advantages: { icon: typeof Gauge; t: string; d: string; accent: Accent }[]
   {
     icon: Gauge,
     t: "Rapide et bien référencé",
-    d: "Chargement en moins de 2 secondes, structure optimisée pour Google et les recherches locales.",
+    d: "Chargement en moins de 2 secondes, structure technique et contenu pensés dès le départ pour le référencement local, pas ajoutés en dernière minute.",
     accent: "teal",
   },
   {
     icon: Clock,
     t: "Livraison en 7 à 10 jours",
-    d: "Un interlocuteur unique, pas d'agence à rallonge : vous êtes en ligne rapidement.",
+    d: "Un interlocuteur unique du premier appel à la mise en ligne, pas une chaîne de commerciaux et de sous-traitants qui rallonge les délais.",
     accent: "amber",
   },
   {
     icon: ShieldCheck,
     t: "Suivi après livraison",
-    d: "Corrections, mises à jour et conseils inclus pendant les premiers mois.",
+    d: "Corrections, petites mises à jour et conseils inclus pendant les premiers mois — votre site ne reste pas à l'abandon une fois payé.",
     accent: "violet",
   },
   {
     icon: MapPin,
     t: "Basé à Casablanca",
-    d: "Rendez-vous possible sur place, et travail à distance partout au Maroc et à l'étranger.",
+    d: "Rendez-vous en personne possible sur place, et travail à distance partout au Maroc et à l'international, avec le même niveau de suivi.",
     accent: "teal",
   },
 ];

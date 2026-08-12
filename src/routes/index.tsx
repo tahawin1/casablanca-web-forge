@@ -9,7 +9,7 @@ import { Marquee } from "@/components/site/Marquee";
 import { CountUp } from "@/components/site/CountUp";
 import { Magnetic } from "@/components/site/Magnetic";
 import { Testimonials } from "@/components/site/Testimonials";
-import { PHONE, PHONE_TEL, PHONE_WA, projects, services } from "@/components/site/data";
+import { PHONE, PHONE_TEL, PHONE_WA, projects, services, beforeAfter } from "@/components/site/data";
 import { accentStyles } from "@/components/site/accent";
 import { pageHead, SITE_URL } from "@/lib/seo";
 
@@ -151,6 +151,41 @@ function Index() {
                   </span>
                 ))}
               </Marquee>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-border bg-card/40">
+          <div className="mx-auto max-w-4xl px-5 py-24">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+              Le constat
+            </p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
+              Vous méritez un site qui travaille pour vous, pas contre vous.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Trop d'entreprises à Casablanca ont un site créé il y a plusieurs années : lent sur
+              mobile, invisible sur Google, avec un design qui ne donne plus envie de rester.
+              Pendant ce temps, vos concurrents captent vos clients potentiels. Un site bien conçu,
+              optimisé pour le référencement et pensé pour convertir, ça change tout.
+            </p>
+            <div className="mt-12 grid gap-4 sm:grid-cols-3">
+              {beforeAfter.map((b, i) => (
+                <Reveal key={b.avant} delay={i * 100} className="surface-card rounded-2xl p-6">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground/70">
+                    Avant
+                  </p>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{b.avant}</p>
+                  <div className="my-4 flex items-center gap-2 text-primary">
+                    <div className="h-px flex-1 bg-primary/30" />
+                    <ArrowRight className="h-4 w-4 shrink-0" />
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                    Après
+                  </p>
+                  <p className="mt-1.5 text-sm font-medium">{b.apres}</p>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>

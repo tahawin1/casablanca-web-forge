@@ -7,6 +7,21 @@ export const PHONE = "+212 6 63 39 40 14";
 export const PHONE_TEL = "+212663394014";
 export const PHONE_WA = "212663394014";
 
+export const beforeAfter = [
+  {
+    avant: "Invisible sur Google",
+    apres: "Structure et contenu pensés pour apparaître sur les recherches de vos clients à Casablanca",
+  },
+  {
+    avant: "Lent, mal adapté au mobile",
+    apres: "Chargement rapide, design responsive testé sur mobile et desktop",
+  },
+  {
+    avant: "Aucun suivi de performance",
+    apres: "Google Analytics et Search Console configurés dès la mise en ligne",
+  },
+];
+
 export type Testimonial = {
   name: string;
   role: string;
@@ -317,21 +332,21 @@ export const serviceLandings: ServiceLandingInfo[] = [
     eyebrow: "Boutique en ligne",
     title: "Création de site e-commerce à Casablanca",
     intro:
-      "Vendez vos produits en ligne 24h/24 avec une boutique e-commerce complète : catalogue, panier, paiement et livraison partout au Maroc. Une structure pensée pour convertir vos visiteurs en clients, pas juste pour être jolie.",
+      "Vendez vos produits en ligne 24h/24 avec une boutique e-commerce complète : catalogue, panier, paiement compatible CMI et livraison via Amana ou le transporteur de votre choix, partout au Maroc. Une structure pensée pour convertir vos visiteurs en clients, pas juste pour être jolie.",
     price: "à partir de 8 000 DH",
     delay: "2 à 4 semaines",
     accent: "amber",
     features: [
       "Catalogue produits illimité avec filtres et collections",
       "Tunnel d'achat clair : panier, commande, confirmation",
-      "Paiement en ligne et/ou paiement à la livraison",
+      "Paiement à la livraison et/ou paiement en ligne (CMI)",
+      "Livraison configurée pour le Maroc (Amana ou transporteur de votre choix)",
       "Gestion des stocks et suivi des commandes",
-      "Interface d'administration simple à prendre en main",
     ],
     faqs: [
       {
         q: "Quels moyens de paiement peut-on proposer ?",
-        a: "Paiement à la livraison, virement, et intégration de solutions de paiement en ligne marocaines selon vos besoins et votre secteur.",
+        a: "Paiement à la livraison, virement, et intégration du Centre Monétique Interbancaire (CMI) pour le paiement par carte en ligne, la solution la plus utilisée par les commerçants au Maroc.",
       },
       {
         q: "Combien de produits puis-je mettre en ligne ?",
