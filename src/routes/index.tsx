@@ -9,6 +9,7 @@ import { Marquee } from "@/components/site/Marquee";
 import { CountUp } from "@/components/site/CountUp";
 import { Magnetic } from "@/components/site/Magnetic";
 import { Testimonials } from "@/components/site/Testimonials";
+import { SplitReveal } from "@/components/site/SplitReveal";
 import { PHONE, PHONE_TEL, PHONE_WA, projects, services, beforeAfter } from "@/components/site/data";
 import { accentStyles } from "@/components/site/accent";
 import { pageHead, SITE_URL } from "@/lib/seo";
@@ -101,12 +102,14 @@ function Index() {
                 <MapPin className="h-3.5 w-3.5" /> Casablanca, Maroc
               </p>
             </Reveal>
-            <Reveal delay={80}>
-              <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl">
-                Je crée des sites web <span className="text-ember">modernes</span> qui vous
-                ramènent des clients.
-              </h1>
-            </Reveal>
+            <SplitReveal
+              tag="h1"
+              delay={80}
+              className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl"
+            >
+              Je crée des sites web <span className="text-ember">modernes</span> qui vous
+              ramènent des clients.
+            </SplitReveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
                 Sites vitrines, boutiques en ligne et applications sur mesure. Livrés vite, pensés
@@ -160,9 +163,9 @@ function Index() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
               Le constat
             </p>
-            <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
+            <SplitReveal tag="h2" className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
               Vous méritez un site qui travaille pour vous, pas contre vous.
-            </h2>
+            </SplitReveal>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
               Trop d'entreprises à Casablanca ont un site créé il y a plusieurs années : lent sur
               mobile, invisible sur Google, avec un design qui ne donne plus envie de rester.
