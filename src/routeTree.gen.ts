@@ -10,33 +10,247 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CreationApplicationWebRouteImport } from './routes/creation-application-web'
+import { Route as CreationSiteECommerceRouteImport } from './routes/creation-site-e-commerce'
+import { Route as CreationSiteVitrineRouteImport } from './routes/creation-site-vitrine'
+import { Route as CreationSiteWebCasablancaRouteImport } from './routes/creation-site-web-casablanca'
+import { Route as CreationSiteWebMarrakechRouteImport } from './routes/creation-site-web-marrakech'
+import { Route as CreationSiteWebRabatRouteImport } from './routes/creation-site-web-rabat'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as MethodeRouteImport } from './routes/methode'
+import { Route as RefonteSiteWebRouteImport } from './routes/refonte-site-web'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as WebsiteDesignCasablancaRouteImport } from './routes/website-design-casablanca'
+import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
+import { Route as RealisationsSlugRouteImport } from './routes/realisations/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreationApplicationWebRoute = CreationApplicationWebRouteImport.update({
+  id: '/creation-application-web',
+  path: '/creation-application-web',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreationSiteECommerceRoute = CreationSiteECommerceRouteImport.update({
+  id: '/creation-site-e-commerce',
+  path: '/creation-site-e-commerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreationSiteVitrineRoute = CreationSiteVitrineRouteImport.update({
+  id: '/creation-site-vitrine',
+  path: '/creation-site-vitrine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreationSiteWebCasablancaRoute =
+  CreationSiteWebCasablancaRouteImport.update({
+    id: '/creation-site-web-casablanca',
+    path: '/creation-site-web-casablanca',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CreationSiteWebMarrakechRoute =
+  CreationSiteWebMarrakechRouteImport.update({
+    id: '/creation-site-web-marrakech',
+    path: '/creation-site-web-marrakech',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CreationSiteWebRabatRoute = CreationSiteWebRabatRouteImport.update({
+  id: '/creation-site-web-rabat',
+  path: '/creation-site-web-rabat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodeRoute = MethodeRouteImport.update({
+  id: '/methode',
+  path: '/methode',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefonteSiteWebRoute = RefonteSiteWebRouteImport.update({
+  id: '/refonte-site-web',
+  path: '/refonte-site-web',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsiteDesignCasablancaRoute = WebsiteDesignCasablancaRouteImport.update({
+  id: '/website-design-casablanca',
+  path: '/website-design-casablanca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
+  id: '/realisations/',
+  path: '/realisations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
+  id: '/realisations/$slug',
+  path: '/realisations/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/creation-application-web': typeof CreationApplicationWebRoute
+  '/creation-site-e-commerce': typeof CreationSiteECommerceRoute
+  '/creation-site-vitrine': typeof CreationSiteVitrineRoute
+  '/creation-site-web-casablanca': typeof CreationSiteWebCasablancaRoute
+  '/creation-site-web-marrakech': typeof CreationSiteWebMarrakechRoute
+  '/creation-site-web-rabat': typeof CreationSiteWebRabatRoute
+  '/faq': typeof FaqRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/methode': typeof MethodeRoute
+  '/refonte-site-web': typeof RefonteSiteWebRoute
+  '/services': typeof ServicesRoute
+  '/website-design-casablanca': typeof WebsiteDesignCasablancaRoute
+  '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/creation-application-web': typeof CreationApplicationWebRoute
+  '/creation-site-e-commerce': typeof CreationSiteECommerceRoute
+  '/creation-site-vitrine': typeof CreationSiteVitrineRoute
+  '/creation-site-web-casablanca': typeof CreationSiteWebCasablancaRoute
+  '/creation-site-web-marrakech': typeof CreationSiteWebMarrakechRoute
+  '/creation-site-web-rabat': typeof CreationSiteWebRabatRoute
+  '/faq': typeof FaqRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/methode': typeof MethodeRoute
+  '/refonte-site-web': typeof RefonteSiteWebRoute
+  '/services': typeof ServicesRoute
+  '/website-design-casablanca': typeof WebsiteDesignCasablancaRoute
+  '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/creation-application-web': typeof CreationApplicationWebRoute
+  '/creation-site-e-commerce': typeof CreationSiteECommerceRoute
+  '/creation-site-vitrine': typeof CreationSiteVitrineRoute
+  '/creation-site-web-casablanca': typeof CreationSiteWebCasablancaRoute
+  '/creation-site-web-marrakech': typeof CreationSiteWebMarrakechRoute
+  '/creation-site-web-rabat': typeof CreationSiteWebRabatRoute
+  '/faq': typeof FaqRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/methode': typeof MethodeRoute
+  '/refonte-site-web': typeof RefonteSiteWebRoute
+  '/services': typeof ServicesRoute
+  '/website-design-casablanca': typeof WebsiteDesignCasablancaRoute
+  '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/creation-application-web'
+    | '/creation-site-e-commerce'
+    | '/creation-site-vitrine'
+    | '/creation-site-web-casablanca'
+    | '/creation-site-web-marrakech'
+    | '/creation-site-web-rabat'
+    | '/faq'
+    | '/mentions-legales'
+    | '/methode'
+    | '/refonte-site-web'
+    | '/services'
+    | '/website-design-casablanca'
+    | '/realisations/$slug'
+    | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/creation-application-web'
+    | '/creation-site-e-commerce'
+    | '/creation-site-vitrine'
+    | '/creation-site-web-casablanca'
+    | '/creation-site-web-marrakech'
+    | '/creation-site-web-rabat'
+    | '/faq'
+    | '/mentions-legales'
+    | '/methode'
+    | '/refonte-site-web'
+    | '/services'
+    | '/website-design-casablanca'
+    | '/realisations/$slug'
+    | '/realisations'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/creation-application-web'
+    | '/creation-site-e-commerce'
+    | '/creation-site-vitrine'
+    | '/creation-site-web-casablanca'
+    | '/creation-site-web-marrakech'
+    | '/creation-site-web-rabat'
+    | '/faq'
+    | '/mentions-legales'
+    | '/methode'
+    | '/refonte-site-web'
+    | '/services'
+    | '/website-design-casablanca'
+    | '/realisations/$slug'
+    | '/realisations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  ContactRoute: typeof ContactRoute
+  CreationApplicationWebRoute: typeof CreationApplicationWebRoute
+  CreationSiteECommerceRoute: typeof CreationSiteECommerceRoute
+  CreationSiteVitrineRoute: typeof CreationSiteVitrineRoute
+  CreationSiteWebCasablancaRoute: typeof CreationSiteWebCasablancaRoute
+  CreationSiteWebMarrakechRoute: typeof CreationSiteWebMarrakechRoute
+  CreationSiteWebRabatRoute: typeof CreationSiteWebRabatRoute
+  FaqRoute: typeof FaqRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
+  MethodeRoute: typeof MethodeRoute
+  RefonteSiteWebRoute: typeof RefonteSiteWebRoute
+  ServicesRoute: typeof ServicesRoute
+  WebsiteDesignCasablancaRoute: typeof WebsiteDesignCasablancaRoute
+  RealisationsSlugRoute: typeof RealisationsSlugRoute
+  RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +262,139 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-application-web': {
+      id: '/creation-application-web'
+      path: '/creation-application-web'
+      fullPath: '/creation-application-web'
+      preLoaderRoute: typeof CreationApplicationWebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-site-e-commerce': {
+      id: '/creation-site-e-commerce'
+      path: '/creation-site-e-commerce'
+      fullPath: '/creation-site-e-commerce'
+      preLoaderRoute: typeof CreationSiteECommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-site-vitrine': {
+      id: '/creation-site-vitrine'
+      path: '/creation-site-vitrine'
+      fullPath: '/creation-site-vitrine'
+      preLoaderRoute: typeof CreationSiteVitrineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-site-web-casablanca': {
+      id: '/creation-site-web-casablanca'
+      path: '/creation-site-web-casablanca'
+      fullPath: '/creation-site-web-casablanca'
+      preLoaderRoute: typeof CreationSiteWebCasablancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-site-web-marrakech': {
+      id: '/creation-site-web-marrakech'
+      path: '/creation-site-web-marrakech'
+      fullPath: '/creation-site-web-marrakech'
+      preLoaderRoute: typeof CreationSiteWebMarrakechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-site-web-rabat': {
+      id: '/creation-site-web-rabat'
+      path: '/creation-site-web-rabat'
+      fullPath: '/creation-site-web-rabat'
+      preLoaderRoute: typeof CreationSiteWebRabatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methode': {
+      id: '/methode'
+      path: '/methode'
+      fullPath: '/methode'
+      preLoaderRoute: typeof MethodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refonte-site-web': {
+      id: '/refonte-site-web'
+      path: '/refonte-site-web'
+      fullPath: '/refonte-site-web'
+      preLoaderRoute: typeof RefonteSiteWebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/website-design-casablanca': {
+      id: '/website-design-casablanca'
+      path: '/website-design-casablanca'
+      fullPath: '/website-design-casablanca'
+      preLoaderRoute: typeof WebsiteDesignCasablancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/realisations/': {
+      id: '/realisations/'
+      path: '/realisations'
+      fullPath: '/realisations/'
+      preLoaderRoute: typeof RealisationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/realisations/$slug': {
+      id: '/realisations/$slug'
+      path: '/realisations/$slug'
+      fullPath: '/realisations/$slug'
+      preLoaderRoute: typeof RealisationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  ContactRoute: ContactRoute,
+  CreationApplicationWebRoute: CreationApplicationWebRoute,
+  CreationSiteECommerceRoute: CreationSiteECommerceRoute,
+  CreationSiteVitrineRoute: CreationSiteVitrineRoute,
+  CreationSiteWebCasablancaRoute: CreationSiteWebCasablancaRoute,
+  CreationSiteWebMarrakechRoute: CreationSiteWebMarrakechRoute,
+  CreationSiteWebRabatRoute: CreationSiteWebRabatRoute,
+  FaqRoute: FaqRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
+  MethodeRoute: MethodeRoute,
+  RefonteSiteWebRoute: RefonteSiteWebRoute,
+  ServicesRoute: ServicesRoute,
+  WebsiteDesignCasablancaRoute: WebsiteDesignCasablancaRoute,
+  RealisationsSlugRoute: RealisationsSlugRoute,
+  RealisationsIndexRoute: RealisationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -6,7 +6,7 @@ import { Portfolio } from "@/components/site/Portfolio";
 import { Gallery } from "@/components/site/Gallery";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/realisations")({
+export const Route = createFileRoute("/realisations/")({
   head: () => pageHead({
     title: "Réalisations : sites web créés au Maroc | Najah Web",
     description:
