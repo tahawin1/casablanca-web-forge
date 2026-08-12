@@ -12,7 +12,7 @@ export const Route = createFileRoute("/faq")({
     ...pageHead({
       title: "Questions fréquentes sur la création de site web | Najah Web",
       description:
-        "Délais de création, hébergement, modification du site, zone d'intervention, paiement : les réponses aux questions les plus posées sur la création d'un site web à Casablanca.",
+        "Délais, hébergement, modification du site, zone d'intervention, paiement : les réponses aux questions les plus posées sur la création d'un site web.",
       path: "/faq",
     }),
     scripts: [

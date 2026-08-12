@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, type MouseEvent } from "react";
 import { Phone, MessageCircle, MapPin, ArrowRight, Gauge, Clock, ShieldCheck } from "lucide-react";
-import heroImage from "@/assets/hero-casablanca.jpg";
+import heroImage from "@/assets/hero-casablanca.webp";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
     ...pageHead({
       title: "Création de site web à Casablanca — Devis gratuit | Najah Web",
       description:
-        "Développeur web à Casablanca : création de sites vitrines, boutiques en ligne et applications sur mesure. Sites rapides, responsives et optimisés pour Google. Devis gratuit sous 24h.",
+        "Développeur web à Casablanca : sites vitrines, boutiques en ligne et applications sur mesure. Rapides, optimisés pour Google. Devis gratuit sous 24h.",
       path: "/",
     }),
     scripts: [

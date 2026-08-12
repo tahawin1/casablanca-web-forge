@@ -8,7 +8,7 @@ const service = serviceLandings.find((s) => s.slug === "creation-site-e-commerce
 export const Route = createFileRoute("/creation-site-e-commerce")({
   head: () => ({
     ...pageHead({
-      title: "Création de site e-commerce à Casablanca — Boutique en ligne | Najah Web",
+      title: "Création de site e-commerce à Casablanca | Najah Web",
       description:
         "Création de boutique en ligne au Maroc : catalogue, paiement, livraison et gestion des stocks. Site e-commerce à partir de 8 000 DH, livré en 2 à 4 semaines.",
       path: "/creation-site-e-commerce",

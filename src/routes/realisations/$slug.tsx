@@ -12,7 +12,7 @@ export const Route = createFileRoute("/realisations/$slug")({
     const project = projects.find((p) => p.caseStudySlug === params.slug);
     return pageHead({
       title: project
-        ? `${project.name} — Étude de cas | Najah Web`
+        ? `${project.name} — ${project.type} | Najah Web`
         : "Étude de cas | Najah Web",
       description:
         project?.summary ??

@@ -71,7 +71,7 @@ export const projects: Project[] = [
     domain: "voltsportswater.com",
     city: "International",
     type: "Site de marque · Abonnement",
-    image: "/portfolio/volt.jpg",
+    image: "/portfolio/volt.webp",
     summary:
       "Marque de boissons fonctionnelles installées en salle de sport. Site de marque avec page produit, test d'hydratation et demande d'offre pour les clubs.",
     highlights: ["Identité de marque forte", "Formulaire d'offre B2B", "Page test interactive"],
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     domain: "tajautoaccessoire.com",
     city: "Casablanca",
     type: "Boutique en ligne",
-    image: "/portfolio/taj.jpg",
+    image: "/portfolio/taj.webp",
     summary:
       "Spécialiste des accessoires automobiles premium. Catalogue par collections et par marques, promotions et commande simplifiée.",
     highlights: ["Catalogue filtrable", "Collections & promos", "Commande rapide"],
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     domain: "hotelryad.ma",
     city: "Nador",
     type: "Hôtellerie · Restaurant",
-    image: "/portfolio/ryad.jpg",
+    image: "/portfolio/ryad.webp",
     summary:
       "Hôtel 3★ au centre de Nador. Site vitrine élégant avec présentation des chambres, carte du restaurant panoramique et contact direct.",
     highlights: ["Carte du restaurant", "Galerie photos", "Contact & itinéraire"],
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     domain: "pressingzerktouni.com",
     city: "Casablanca",
     type: "Service local · Commande en ligne",
-    image: "/portfolio/pressing.jpg",
+    image: "/portfolio/pressing.webp",
     summary:
       "Pressing du Bd Mohamed Zerktouni. Prise de commande en ligne, service express 6h, ramassage et livraison gratuits.",
     highlights: ["Commande en ligne", "Tarifs par service", "SEO local Casablanca"],

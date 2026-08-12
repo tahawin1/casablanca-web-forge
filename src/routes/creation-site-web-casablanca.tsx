@@ -8,7 +8,7 @@ const city = cities.find((c) => c.slug === "casablanca")!;
 export const Route = createFileRoute("/creation-site-web-casablanca")({
   head: () => ({
     ...pageHead({
-      title: "Création de site web à Casablanca — Sites vitrines & e-commerce | Najah Web",
+      title: "Création de site web à Casablanca | Najah Web",
       description:
         "Développeur web basé à Casablanca : création de sites vitrines, boutiques en ligne et applications sur mesure pour les entreprises de la ville. Devis gratuit sous 24h.",
       path: "/creation-site-web-casablanca",

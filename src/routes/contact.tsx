@@ -10,7 +10,7 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => pageHead({
-    title: "Contact — Devis gratuit pour votre site web à Casablanca | Najah Web",
+    title: "Contact — Devis gratuit site web Casablanca | Najah Web",
     description:
       "Demandez un devis gratuit pour la création de votre site web à Casablanca, par téléphone, WhatsApp ou via le formulaire de contact. Réponse sous 24h.",
     path: "/contact",
