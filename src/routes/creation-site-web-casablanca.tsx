@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CityLanding } from "@/components/site/CityLanding";
 import { cities, PHONE } from "@/components/site/data";
-import { pageHead, SITE_URL } from "@/lib/seo";
+import { pageHead, breadcrumbLd, SITE_URL } from "@/lib/seo";
 
 const city = cities.find((c) => c.slug === "casablanca")!;
 
@@ -25,6 +25,15 @@ export const Route = createFileRoute("/creation-site-web-casablanca")({
           areaServed: "Casablanca",
           address: { "@type": "PostalAddress", addressLocality: "Casablanca", addressCountry: "MA" },
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Accueil", path: "/" },
+            { name: "Casablanca", path: "/creation-site-web-casablanca" },
+          ]),
+        ),
       },
     ],
   }),

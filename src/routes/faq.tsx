@@ -5,7 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Faq } from "@/components/site/Sections";
 import { faqs } from "@/components/site/data";
-import { pageHead } from "@/lib/seo";
+import { pageHead, breadcrumbLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -27,6 +27,15 @@ export const Route = createFileRoute("/faq")({
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Accueil", path: "/" },
+            { name: "FAQ", path: "/faq" },
+          ]),
+        ),
       },
     ],
   }),

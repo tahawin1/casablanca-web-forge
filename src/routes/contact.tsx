@@ -6,14 +6,27 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/Sections";
 import { PHONE, PHONE_TEL, PHONE_WA } from "@/components/site/data";
-import { pageHead } from "@/lib/seo";
+import { pageHead, breadcrumbLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => pageHead({
-    title: "Contact — Devis gratuit site web Casablanca | Najah Web",
-    description:
-      "Demandez un devis gratuit pour la création de votre site web à Casablanca, par téléphone, WhatsApp ou via le formulaire de contact. Réponse sous 24h.",
-    path: "/contact",
+  head: () => ({
+    ...pageHead({
+      title: "Contact — Devis gratuit site web Casablanca | Najah Web",
+      description:
+        "Demandez un devis gratuit pour la création de votre site web à Casablanca, par téléphone, WhatsApp ou via le formulaire de contact. Réponse sous 24h.",
+      path: "/contact",
+    }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Accueil", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ),
+      },
+    ],
   }),
   component: ContactPage,
 });

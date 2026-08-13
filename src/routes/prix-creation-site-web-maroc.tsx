@@ -7,7 +7,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Magnetic } from "@/components/site/Magnetic";
 import { accentStyles } from "@/components/site/accent";
 import { services, maintenance } from "@/components/site/data";
-import { pageHead } from "@/lib/seo";
+import { pageHead, breadcrumbLd } from "@/lib/seo";
 
 const faqs = [
   {
@@ -52,6 +52,15 @@ export const Route = createFileRoute("/prix-creation-site-web-maroc")({
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Accueil", path: "/" },
+            { name: "Prix & tarifs", path: "/prix-creation-site-web-maroc" },
+          ]),
+        ),
       },
     ],
   }),

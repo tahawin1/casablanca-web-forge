@@ -5,16 +5,28 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Magnetic } from "@/components/site/Magnetic";
-import { pageHead } from "@/lib/seo";
+import { pageHead, breadcrumbLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/a-propos")({
-  head: () =>
-    pageHead({
+  head: () => ({
+    ...pageHead({
       title: "Développeur web freelance à Casablanca | Najah Web",
       description:
         "Développeur web freelance basé à Casablanca, formation d'ingénieur en cybersécurité : HTTPS, formulaires protégés, données clients traitées avec rigueur dès la conception.",
       path: "/a-propos",
     }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Accueil", path: "/" },
+            { name: "À propos", path: "/a-propos" },
+          ]),
+        ),
+      },
+    ],
+  }),
   component: AboutPage,
 });
 

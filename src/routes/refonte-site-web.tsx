@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceLanding } from "@/components/site/ServiceLanding";
 import { serviceLandings } from "@/components/site/data";
-import { pageHead } from "@/lib/seo";
+import { pageHead, breadcrumbLd } from "@/lib/seo";
 
 const service = serviceLandings.find((s) => s.slug === "refonte-site-web")!;
 
@@ -25,6 +25,15 @@ export const Route = createFileRoute("/refonte-site-web")({
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Accueil", path: "/" },
+            { name: "Refonte de site web", path: "/refonte-site-web" },
+          ]),
+        ),
       },
     ],
   }),

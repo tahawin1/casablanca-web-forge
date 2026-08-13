@@ -6,7 +6,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Magnetic } from "@/components/site/Magnetic";
 import { PHONE, PHONE_TEL, PHONE_WA } from "@/components/site/data";
-import { pageHead } from "@/lib/seo";
+import { pageHead, breadcrumbLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/website-design-casablanca")({
   head: () => ({
@@ -27,6 +27,15 @@ export const Route = createFileRoute("/website-design-casablanca")({
           telephone: PHONE,
           address: { "@type": "PostalAddress", addressLocality: "Casablanca", addressCountry: "MA" },
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbLd([
+            { name: "Home", path: "/" },
+            { name: "Website Design Casablanca", path: "/website-design-casablanca" },
+          ]),
+        ),
       },
     ],
   }),
