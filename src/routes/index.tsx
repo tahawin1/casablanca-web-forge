@@ -105,10 +105,10 @@ function Index() {
             <SplitReveal
               tag="h1"
               delay={80}
+              accentWords={["modernes"]}
               className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl"
             >
-              Je crée des sites web <span className="text-ember">modernes</span> qui vous
-              ramènent des clients.
+              Je crée des sites web modernes qui vous ramènent des clients.
             </SplitReveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
